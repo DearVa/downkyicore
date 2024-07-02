@@ -1,7 +1,7 @@
 ﻿namespace DownKyi.Core.Storage;
 
 /// <summary>
-/// 存储到本地时使用的一些常量
+///     存储到本地时使用的一些常量
 /// </summary>
 internal static class Constant
 {

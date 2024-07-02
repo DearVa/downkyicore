@@ -1,10 +1,10 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.VideoStream.Models;
 
 public class PlayUrlDashFlac : BaseModel
 {
-    [JsonProperty("audio")] public PlayUrlDashVideo Audio { get; set; }
+    [JsonPropertyName("audio")] public PlayUrlDashVideo Audio { get; set; }
     //bool display { get; set; }
 }

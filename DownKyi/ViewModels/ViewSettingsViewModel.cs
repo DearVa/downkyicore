@@ -28,7 +28,7 @@ public class ViewSettingsViewModel : ViewModelBase
 
     private List<TabHeader> tabHeaders;
 
-    public List<TabHeader> TabHeaders
+    public required List<TabHeader> TabHeaders
     {
         get => tabHeaders;
         set => SetProperty(ref tabHeaders, value);

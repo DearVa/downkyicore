@@ -9,7 +9,7 @@ public class DisplayFileNamePart : BindableBase
 
     private string title;
 
-    public string Title
+    public required string Title
     {
         get => title;
         set => SetProperty(ref title, value);

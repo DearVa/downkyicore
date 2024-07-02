@@ -27,7 +27,7 @@ public class MachineCode
     // /// 获取主板ID
     // /// </summary>
     // /// <returns></returns>
-    // public string GetMainBordId()
+    // public required stringGetMainBordId()
     // {
     //     string strId = "";
     //     try
@@ -55,7 +55,7 @@ public class MachineCode
     // /// 获取cpu序列号
     // /// </summary>
     // /// <returns></returns>
-    // public string GetCpuInfo()
+    // public required string GetCpuInfo()
     // {
     //     string cpuInfo = "";
     //     try
@@ -83,7 +83,7 @@ public class MachineCode
     // /// 获取硬盘ID
     // /// </summary> 
     // /// <returns></returns> 
-    // public string GetDiskID()
+    // public required string GetDiskID()
     // {
     //     string diskName = "";
     //     string diskID = "";
@@ -112,7 +112,7 @@ public class MachineCode
     // /// 获取网卡硬件地址
     // /// </summary> 
     // /// <returns></returns> 
-    // public string GetMoAddress()
+    // public required string GetMoAddress()
     // {
     //     string MoAddress = "";
     //     try

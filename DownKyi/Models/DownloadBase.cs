@@ -24,22 +24,22 @@ public class DownloadBase
     }
 
     // 此条下载项的id
-    public string Uuid { get; }
+    public required string Uuid { get; }
 
     // 需要下载的内容
     public Dictionary<string, bool> NeedDownloadContent { get; set; }
 
     // 视频的id
-    public string Bvid { get; set; }
+    public required string Bvid { get; set; }
     public long Avid { get; set; }
     public long Cid { get; set; }
     public long EpisodeId { get; set; }
 
     // 视频封面的url
-    public string CoverUrl { get; set; }
+    public required string CoverUrl { get; set; }
 
     // 视频page的封面的url
-    public string PageCoverUrl { get; set; }
+    public required string PageCoverUrl { get; set; }
 
     // 分区id
     public int ZoneId { get; set; }
@@ -48,16 +48,16 @@ public class DownloadBase
     public int Order { get; set; }
 
     // 视频主标题
-    public string MainTitle { get; set; }
+    public required string MainTitle { get; set; }
 
     // 视频标题
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
     // 时长
-    public string Duration { get; set; }
+    public required string Duration { get; set; }
 
     // 视频编码名称，AVC、HEVC
-    public string VideoCodecName { get; set; }
+    public required string VideoCodecName { get; set; }
 
     // 视频画质
     public Quality Resolution { get; set; }
@@ -66,10 +66,10 @@ public class DownloadBase
     public Quality AudioCodec { get; set; }
 
     // 文件路径，不包含扩展名，所有内容均以此路径下载
-    public string FilePath { get; set; }
+    public required string FilePath { get; set; }
 
     // 文件大小
-    public string FileSize { get; set; }
+    public required string FileSize { get; set; }
 
     // 视频分p(默认为1)
     public int Page { get; set; } = 1;

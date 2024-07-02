@@ -1,14 +1,12 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
-using DownKyi.Core.Logging;
-using Console = DownKyi.Core.Utils.Debugging.Console;
 
 namespace DownKyi.Core.Utils.Encryptor;
 
 public static partial class Encryptor
 {
     /// <summary>
-    /// DES加密字符串
+    ///     DES加密字符串
     /// </summary>
     /// <param name="encryptString">待加密的字符串</param>
     /// <param name="encryptKey">加密密钥,要求为8位</param>
@@ -31,14 +29,13 @@ public static partial class Encryptor
         }
         catch (Exception e)
         {
-            Console.PrintLine("EncryptString()发生异常: {0}", e);
-            LogManager.Error("Encryptor", e);
-            return encryptString;
+            Console.Error.WriteLine("EncryptString()发生异常: {0}", e);
+                        return encryptString;
         }
     }
 
     /// <summary>
-    /// DES解密字符串
+    ///     DES解密字符串
     /// </summary>
     /// <param name="decryptString">待解密的字符串</param>
     /// <param name="decryptKey">解密密钥,要求为8位,和加密密钥相同</param>
@@ -59,9 +56,8 @@ public static partial class Encryptor
         }
         catch (Exception e)
         {
-            Console.PrintLine("DecryptString()发生异常: {0}", e);
-            LogManager.Error("Encryptor", e);
-            return decryptString;
+            Console.Error.WriteLine("DecryptString()发生异常: {0}", e);
+                        return decryptString;
         }
     }
 }

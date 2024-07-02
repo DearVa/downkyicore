@@ -1,39 +1,39 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Bangumi.Models;
 
 public class BangumiEpisode : BaseModel
 {
-    [JsonProperty("aid")] public long Aid { get; set; }
+    [JsonPropertyName("aid")] public long Aid { get; set; }
 
-    [JsonProperty("badge")] public string Badge { get; set; }
+    [JsonPropertyName("badge")] public required string Badge { get; set; }
 
     // badge_info
     // badge_type
-    [JsonProperty("bvid")] public string Bvid { get; set; }
-    [JsonProperty("cid")] public long Cid { get; set; }
-    [JsonProperty("cover")] public string Cover { get; set; }
-    [JsonProperty("dimension")] public Dimension Dimension { get; set; }
-    [JsonProperty("duration")] public long Duration { get; set; }
-    [JsonProperty("from")] public string From { get; set; }
-    [JsonProperty("id")] public long Id { get; set; }
-    [JsonProperty("link")] public string Link { get; set; }
-    [JsonProperty("long_title")] public string LongTitle { get; set; }
+    [JsonPropertyName("bvid")] public required string Bvid { get; set; }
+    [JsonPropertyName("cid")] public long Cid { get; set; }
+    [JsonPropertyName("cover")] public required string Cover { get; set; }
+    [JsonPropertyName("dimension")] public Dimension Dimension { get; set; }
+    [JsonPropertyName("duration")] public long Duration { get; set; }
+    [JsonPropertyName("from")] public required string From { get; set; }
+    [JsonPropertyName("id")] public long Id { get; set; }
+    [JsonPropertyName("link")] public required string Link { get; set; }
+    [JsonPropertyName("long_title")] public required string LongTitle { get; set; }
 
-    [JsonProperty("pub_time")] public long PubTime { get; set; }
+    [JsonPropertyName("pub_time")] public long PubTime { get; set; }
 
     // pv
     // release_date
     // rights
-    [JsonProperty("share_copy")] public string ShareCopy { get; set; }
-    [JsonProperty("share_url")] public string ShareUrl { get; set; }
+    [JsonPropertyName("share_copy")] public required string ShareCopy { get; set; }
+    [JsonPropertyName("share_url")] public required string ShareUrl { get; set; }
 
-    [JsonProperty("short_link")] public string ShortLink { get; set; }
+    [JsonPropertyName("short_link")] public required string ShortLink { get; set; }
 
     // stat
-    [JsonProperty("status")] public int Status { get; set; }
-    [JsonProperty("subtitle")] public string Subtitle { get; set; }
-    [JsonProperty("title")] public string Title { get; set; }
-    [JsonProperty("vid")] public string Vid { get; set; }
+    [JsonPropertyName("status")] public int Status { get; set; }
+    [JsonPropertyName("subtitle")] public required string Subtitle { get; set; }
+    [JsonPropertyName("title")] public required string Title { get; set; }
+    [JsonPropertyName("vid")] public required string Vid { get; set; }
 }

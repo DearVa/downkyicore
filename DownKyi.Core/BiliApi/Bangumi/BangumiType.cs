@@ -2,7 +2,7 @@
 
 public static class BangumiType
 {
-    public static Dictionary<int, string> Type = new Dictionary<int, string>()
+    public static Dictionary<int, string> Type = new()
     {
         { 1, "Anime" },
         { 2, "Movie" },
@@ -13,10 +13,10 @@ public static class BangumiType
         { 7, "Entertainment" },
         { 8, "Unknown" },
         { 9, "Unknown" },
-        { 10, "Unknown" }
+        { 10, "Unknown" },
     };
 
-    public static Dictionary<int, int> TypeId = new Dictionary<int, int>()
+    public static Dictionary<int, int> TypeId = new()
     {
         { 1, 13 },
         { 2, 23 },
@@ -27,6 +27,6 @@ public static class BangumiType
         { 7, -1 },
         { 8, -1 },
         { 9, -1 },
-        { 10, -1 }
+        { 10, -1 },
     };
 }

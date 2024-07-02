@@ -1,17 +1,17 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Users.Models;
 
 // https://api.bilibili.com/x/space/channel/video?mid={mid}&cid={cid}&pn={pn}&ps={ps}
 public class SpaceChannelVideoOrigin : BaseModel
 {
-    [JsonProperty("data")] public SpaceChannelVideo Data { get; set; }
+    [JsonPropertyName("data")] public required SpaceChannelVideo Data { get; set; }
 }
 
 public class SpaceChannelVideo : BaseModel
 {
     // episodic_button
-    [JsonProperty("list")] public SpaceChannelVideoList List { get; set; }
-    [JsonProperty("page")] public SpaceChannelVideoPage Page { get; set; }
+    [JsonPropertyName("list")] public required SpaceChannelVideoList List { get; set; }
+    [JsonPropertyName("page")] public required SpaceChannelVideoPage Page { get; set; }
 }

@@ -5,7 +5,7 @@ namespace DownKyi.Core.Utils.Validator;
 public static class Number
 {
     /// <summary>
-    /// 字符串转数字（长整型）
+    ///     字符串转数字（长整型）
     /// </summary>
     /// <param name="value"></param>
     /// <returns></returns>
@@ -15,7 +15,7 @@ public static class Number
     }
 
     /// <summary>
-    /// 是否为数字
+    ///     是否为数字
     /// </summary>
     /// <param name="value"></param>
     /// <returns></returns>

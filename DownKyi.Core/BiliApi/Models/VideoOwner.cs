@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace DownKyi.Core.BiliApi.Models;
 
 public class VideoOwner : BaseModel
 {
-    [JsonProperty("mid")] public long Mid { get; set; }
-    [JsonProperty("name")] public string Name { get; set; }
-    [JsonProperty("face")] public string Face { get; set; }
+    [JsonPropertyName("mid")] public long Mid { get; set; }
+    [JsonPropertyName("name")] public required string Name { get; set; }
+    [JsonPropertyName("face")] public required string Face { get; set; }
 }

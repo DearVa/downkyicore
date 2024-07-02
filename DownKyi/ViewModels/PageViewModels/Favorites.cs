@@ -7,7 +7,7 @@ namespace DownKyi.ViewModels.PageViewModels;
 
 public class Favorites : BindableBase
 {
-    public string CoverUrl { get; set; }
+    public required string CoverUrl { get; set; }
     public long UpperMid { get; set; }
 
     private Bitmap cover;
@@ -20,7 +20,7 @@ public class Favorites : BindableBase
 
     private string title;
 
-    public string Title
+    public required string Title
     {
         get => title;
         set => SetProperty(ref title, value);
@@ -28,7 +28,7 @@ public class Favorites : BindableBase
 
     private string createTime;
 
-    public string CreateTime
+    public required string CreateTime
     {
         get => createTime;
         set => SetProperty(ref createTime, value);
@@ -36,7 +36,7 @@ public class Favorites : BindableBase
 
     private string playNumber;
 
-    public string PlayNumber
+    public required string PlayNumber
     {
         get => playNumber;
         set => SetProperty(ref playNumber, value);
@@ -44,7 +44,7 @@ public class Favorites : BindableBase
 
     private string likeNumber;
 
-    public string LikeNumber
+    public required string LikeNumber
     {
         get => likeNumber;
         set => SetProperty(ref likeNumber, value);
@@ -52,7 +52,7 @@ public class Favorites : BindableBase
 
     private string favoriteNumber;
 
-    public string FavoriteNumber
+    public required string FavoriteNumber
     {
         get => favoriteNumber;
         set => SetProperty(ref favoriteNumber, value);
@@ -60,7 +60,7 @@ public class Favorites : BindableBase
 
     private string shareNumber;
 
-    public string ShareNumber
+    public required string ShareNumber
     {
         get => shareNumber;
         set => SetProperty(ref shareNumber, value);
@@ -100,7 +100,7 @@ public class Favorites : BindableBase
 
     private string description;
 
-    public string Description
+    public required string Description
     {
         get => description;
         set => SetProperty(ref description, value);
@@ -116,7 +116,7 @@ public class Favorites : BindableBase
 
     private string upName;
 
-    public string UpName
+    public required string UpName
     {
         get => upName;
         set => SetProperty(ref upName, value);

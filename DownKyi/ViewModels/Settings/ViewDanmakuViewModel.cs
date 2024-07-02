@@ -61,7 +61,7 @@ public class ViewDanmakuViewModel : ViewModelBase
 
     private List<string> fonts;
 
-    public List<string> Fonts
+    public required List<string> Fonts
     {
         get { return fonts; }
         set { SetProperty(ref fonts, value); }
@@ -69,7 +69,7 @@ public class ViewDanmakuViewModel : ViewModelBase
 
     private string selectedFont;
 
-    public string SelectedFont
+    public required stringSelectedFont
     {
         get { return selectedFont; }
         set { SetProperty(ref selectedFont, value); }

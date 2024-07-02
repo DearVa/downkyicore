@@ -1,12 +1,12 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Cheese.Models;
 
 public class CheeseBrief : BaseModel
 {
     // content
-    [JsonProperty("img")] public List<CheeseImg> Img { get; set; }
-    [JsonProperty("title")] public string Title { get; set; }
-    [JsonProperty("type")] public int Type { get; set; }
+    [JsonPropertyName("img")] public required List<CheeseImg> Img { get; set; }
+    [JsonPropertyName("title")] public required string Title { get; set; }
+    [JsonPropertyName("type")] public int Type { get; set; }
 }

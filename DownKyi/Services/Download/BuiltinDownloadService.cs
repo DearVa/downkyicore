@@ -168,9 +168,8 @@ public class BuiltinDownloadService : DownloadService, IDownloadService
         }
         catch (FileNotFoundException e)
         {
-            Console.PrintLine("BuiltinDownloadService.DownloadVideo()发生异常: {0}", e);
-            LogManager.Error("BuiltinDownloadService.DownloadVideo()", e);
-
+            Console.Error.WriteLine("BuiltinDownloadService.DownloadVideo()发生异常: {0}", e);
+            
             return nullMark;
         }
     }
@@ -374,15 +373,13 @@ public class BuiltinDownloadService : DownloadService, IDownloadService
                 }
                 catch (InvalidOperationException ex)
                 {
-                    Console.PrintLine(
+                    Console.Error.WriteLine(
                         $"{Tag}.DownloadByBuiltin()发生InvalidOperationException异常: {0}", ex);
-                    LogManager.Error($"{Tag}.DownloadByBuiltin()", ex);
-                }
+                                    }
                 catch (Exception ex)
                 {
-                    Console.PrintLine($"{Tag}.DownloadByBuiltin()发生异常: {0}", ex);
-                    LogManager.Error($"{Tag}.DownloadByBuiltin()", ex);
-                }
+                    Console.Error.WriteLine($"{Tag}.DownloadByBuiltin()发生异常: {0}", ex);
+                                    }
             };
 
             // 文件合并完成回调

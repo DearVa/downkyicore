@@ -1,24 +1,24 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.VideoStream.Models;
 
 public class PlayUrlDashVideo : BaseModel
 {
-    [JsonProperty("id")] public int Id { get; set; }
-    [JsonProperty("base_url")] public string BaseUrl { get; set; }
+    [JsonPropertyName("id")] public int Id { get; set; }
+    [JsonPropertyName("base_url")] public required string BaseUrl { get; set; }
 
-    [JsonProperty("backup_url")] public List<string> BackupUrl { get; set; }
+    [JsonPropertyName("backup_url")] public required List<string> BackupUrl { get; set; }
 
     // bandwidth
-    [JsonProperty("mimeType")] public string MimeType { get; set; }
+    [JsonPropertyName("mimeType")] public required string MimeType { get; set; }
 
     // mime_type
-    [JsonProperty("codecs")] public string Codecs { get; set; }
-    [JsonProperty("width")] public int Width { get; set; }
-    [JsonProperty("height")] public int Height { get; set; }
+    [JsonPropertyName("codecs")] public required string Codecs { get; set; }
+    [JsonPropertyName("width")] public int Width { get; set; }
+    [JsonPropertyName("height")] public int Height { get; set; }
 
-    [JsonProperty("frameRate")] public string FrameRate { get; set; }
+    [JsonPropertyName("frameRate")] public required string FrameRate { get; set; }
 
     // frame_rate
     // sar
@@ -26,5 +26,5 @@ public class PlayUrlDashVideo : BaseModel
     // start_with_sap
     // SegmentBase
     // segment_base
-    [JsonProperty("codecid")] public int CodecId { get; set; }
+    [JsonPropertyName("codecid")] public int CodecId { get; set; }
 }

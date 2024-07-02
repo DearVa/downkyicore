@@ -1,12 +1,9 @@
-﻿using DownKyi.Core.Logging;
-using Console = DownKyi.Core.Utils.Debugging.Console;
-
-namespace DownKyi.Core.Utils;
+﻿namespace DownKyi.Core.Utils;
 
 public static class HardDisk
 {
     /// <summary>
-    /// 获取指定驱动器的空间总大小
+    ///     获取指定驱动器的空间总大小
     /// </summary>
     /// <param name="hardDiskName">只需输入代表驱动器的字母即可</param>
     /// <returns></returns>
@@ -29,15 +26,14 @@ public static class HardDisk
         }
         catch (Exception e)
         {
-            Console.PrintLine("GetHardDiskSpace()发生异常: {0}", e);
-            LogManager.Error("HardDisk", e);
-        }
+            Console.Error.WriteLine("GetHardDiskSpace()发生异常: {0}", e);
+                    }
 
         return totalSize;
     }
 
     /// <summary>
-    /// 获取指定驱动器的剩余空间总大小
+    ///     获取指定驱动器的剩余空间总大小
     /// </summary>
     /// <param name="path">路径</param>
     /// <returns></returns>
@@ -59,9 +55,8 @@ public static class HardDisk
         }
         catch (Exception e)
         {
-            Console.PrintLine("GetHardDiskFreeSpace()发生异常: {0}", e);
-            LogManager.Error("HardDisk", e);
-        }
+            Console.Error.WriteLine("GetHardDiskFreeSpace()发生异常: {0}", e);
+                    }
 
         return freeSpace;
     }*/
@@ -76,9 +71,8 @@ public static class HardDisk
         }
         catch (Exception e)
         {
-            Console.PrintLine("GetHardDiskFreeSpace()发生异常: {0}", e);
-            LogManager.Error("HardDisk", e);
-        }
+            Console.Error.WriteLine("GetHardDiskFreeSpace()发生异常: {0}", e);
+                    }
 
         return freeSpace;
     }

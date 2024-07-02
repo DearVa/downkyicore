@@ -17,16 +17,16 @@ public class HistoryMedia : BindableBase
     }
 
     // bvid
-    public string Bvid { get; set; }
+    public required string Bvid { get; set; }
 
     // 播放url
-    public string Url { get; set; }
+    public required string Url { get; set; }
 
     // UP主的mid
     public long UpMid { get; set; }
 
     // 类型
-    public string Business { get; set; }
+    public required string Business { get; set; }
 
     #region 页面属性申明
 
@@ -51,7 +51,7 @@ public class HistoryMedia : BindableBase
     // 视频标题
     private string title;
 
-    public string Title
+    public required string Title
     {
         get => title;
         set => SetProperty(ref title, value);
@@ -60,7 +60,7 @@ public class HistoryMedia : BindableBase
     // 分P的标题
     private string subTitle;
 
-    public string SubTitle
+    public required string SubTitle
     {
         get => subTitle;
         set => SetProperty(ref subTitle, value);
@@ -78,7 +78,7 @@ public class HistoryMedia : BindableBase
     // tag标签
     private string tagName;
 
-    public string TagName
+    public required string TagName
     {
         get => tagName;
         set => SetProperty(ref tagName, value);
@@ -87,7 +87,7 @@ public class HistoryMedia : BindableBase
     // new_desc 剧集或分P描述
     private string partdesc;
 
-    public string Partdesc
+    public required string Partdesc
     {
         get => partdesc;
         set => SetProperty(ref partdesc, value);
@@ -96,7 +96,7 @@ public class HistoryMedia : BindableBase
     // 观看进度
     private string progress;
 
-    public string Progress
+    public required string Progress
     {
         get => progress;
         set => SetProperty(ref progress, value);
@@ -114,7 +114,7 @@ public class HistoryMedia : BindableBase
     // UP主的昵称
     private string upName;
 
-    public string UpName
+    public required string UpName
     {
         get => upName;
         set => SetProperty(ref upName, value);

@@ -1,44 +1,44 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Favorites.Models;
 
 // https://api.bilibili.com/x/v3/fav/folder/info
 public class FavoritesMetaInfoOrigin : BaseModel
 {
-    //[JsonProperty("code")]
+    //[JsonPropertyName("code")]
     //public int Code { get; set; }
-    //[JsonProperty("message")]
-    //public string Message { get; set; }
-    //[JsonProperty("ttl")]
+    //[JsonPropertyName("message")]
+    //public required stringMessage { get; set; }
+    //[JsonPropertyName("ttl")]
     //public int Ttl { get; set; }
-    [JsonProperty("data")] public FavoritesMetaInfo Data { get; set; }
+    [JsonPropertyName("data")] public required FavoritesMetaInfo Data { get; set; }
 }
 
 public class FavoritesMetaInfo : BaseModel
 {
-    [JsonProperty("id")] public long Id { get; set; }
-    [JsonProperty("fid")] public long Fid { get; set; }
+    [JsonPropertyName("id")] public long Id { get; set; }
+    [JsonPropertyName("fid")] public long Fid { get; set; }
 
-    [JsonProperty("mid")] public long Mid { get; set; }
+    [JsonPropertyName("mid")] public long Mid { get; set; }
 
     // attr
-    [JsonProperty("title")] public string Title { get; set; }
-    [JsonProperty("cover")] public string Cover { get; set; }
+    [JsonPropertyName("title")] public required string Title { get; set; }
+    [JsonPropertyName("cover")] public required string Cover { get; set; }
 
-    [JsonProperty("upper")] public FavUpper Upper { get; set; }
+    [JsonPropertyName("upper")] public required FavUpper Upper { get; set; }
 
     // cover_type
-    [JsonProperty("cnt_info")] public FavStatus CntInfo { get; set; }
+    [JsonPropertyName("cnt_info")] public required FavStatus CntInfo { get; set; }
 
     // type
-    [JsonProperty("intro")] public string Intro { get; set; }
-    [JsonProperty("ctime")] public long Ctime { get; set; }
+    [JsonPropertyName("intro")] public required string Intro { get; set; }
+    [JsonPropertyName("ctime")] public long Ctime { get; set; }
 
-    [JsonProperty("mtime")] public long Mtime { get; set; }
+    [JsonPropertyName("mtime")] public long Mtime { get; set; }
 
     // state
-    [JsonProperty("fav_state")] public int FavState { get; set; }
-    [JsonProperty("like_state")] public int LikeState { get; set; }
-    [JsonProperty("media_count")] public int MediaCount { get; set; }
+    [JsonPropertyName("fav_state")] public int FavState { get; set; }
+    [JsonPropertyName("like_state")] public int LikeState { get; set; }
+    [JsonPropertyName("media_count")] public int MediaCount { get; set; }
 }

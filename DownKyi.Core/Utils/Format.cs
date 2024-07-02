@@ -3,7 +3,7 @@
 public static class Format
 {
     /// <summary>
-    /// 格式化Duration时间
+    ///     格式化Duration时间
     /// </summary>
     /// <param name="duration"></param>
     /// <returns></returns>
@@ -24,7 +24,7 @@ public static class Format
     }
 
     /// <summary>
-    /// 格式化Duration时间，格式为00:00:00
+    ///     格式化Duration时间，格式为00:00:00
     /// </summary>
     /// <param name="duration"></param>
     /// <returns></returns>
@@ -45,7 +45,7 @@ public static class Format
     }
 
     /// <summary>
-    /// 格式化Duration时间，格式为00:00
+    ///     格式化Duration时间，格式为00:00
     /// </summary>
     /// <param name="duration"></param>
     /// <returns></returns>
@@ -66,7 +66,7 @@ public static class Format
     }
 
     /// <summary>
-    /// 格式化数字，超过10000的数字将单位改为万，超过100000000的数字将单位改为亿，并保留1位小数
+    ///     格式化数字，超过10000的数字将单位改为万，超过100000000的数字将单位改为亿，并保留1位小数
     /// </summary>
     /// <param name="number"></param>
     /// <returns></returns>
@@ -76,49 +76,49 @@ public static class Format
         {
             > 99999999 => (number / 100000000.0f).ToString("F1") + "亿",
             > 9999 => (number / 10000.0f).ToString("F1") + "万",
-            _ => number.ToString()
+            _ => number.ToString(),
         };
     }
 
     /// <summary>
-    /// 格式化网速
+    ///     格式化网速
     /// </summary>
     /// <param name="speed"></param>
     /// <returns></returns>
     public static string FormatSpeed(float speed)
     {
-        string formatSpeed = speed switch
+        var formatSpeed = speed switch
         {
             <= 0 => "0B/s",
             < 1024 => $"{speed:F2}B/s",
             < 1024 * 1024 => $"{speed / 1024:F2}KB/s",
-            _ => $"{speed / 1024 / 1024:F2}MB/s"
+            _ => $"{speed / 1024 / 1024:F2}MB/s",
         };
 
         return formatSpeed;
     }
 
     /// <summary>
-    /// 格式化字节大小，可用于文件大小的显示
+    ///     格式化字节大小，可用于文件大小的显示
     /// </summary>
     /// <param name="fileSize"></param>
     /// <returns></returns>
     public static string FormatFileSize(long fileSize)
     {
-        string formatFileSize = fileSize switch
+        var formatFileSize = fileSize switch
         {
             <= 0 => "0B",
-            < 1024 => fileSize.ToString() + "B",
+            < 1024 => fileSize + "B",
             < 1024 * 1024 => (fileSize / 1024.0).ToString("#.##") + "KB",
             < 1024 * 1024 * 1024 => (fileSize / 1024.0 / 1024.0).ToString("#.##") + "MB",
-            _ => (fileSize / 1024.0 / 1024.0 / 1024.0).ToString("#.##") + "GB"
+            _ => (fileSize / 1024.0 / 1024.0 / 1024.0).ToString("#.##") + "GB",
         };
 
         return formatFileSize;
     }
 
     /// <summary>
-    /// 去除非法字符
+    ///     去除非法字符
     /// </summary>
     /// <param name="originName"></param>
     /// <returns></returns>

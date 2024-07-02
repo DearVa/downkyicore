@@ -1,10 +1,10 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Cheese.Models;
 
 public class CheeseImg : BaseModel
 {
-    [JsonProperty("aspect_ratio")] public double AspectRatio { get; set; }
-    [JsonProperty("url")] public string Url { get; set; }
+    [JsonPropertyName("aspect_ratio")] public double AspectRatio { get; set; }
+    [JsonPropertyName("url")] public required string Url { get; set; }
 }

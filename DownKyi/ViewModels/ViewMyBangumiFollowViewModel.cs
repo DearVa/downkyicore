@@ -38,7 +38,7 @@ public class ViewMyBangumiFollowViewModel : ViewModelBase
 
     private string _pageName = Tag;
 
-    public string PageName
+    public required string PageName
     {
         get => _pageName;
         set => SetProperty(ref _pageName, value);

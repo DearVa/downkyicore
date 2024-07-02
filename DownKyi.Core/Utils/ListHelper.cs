@@ -5,7 +5,7 @@ namespace DownKyi.Core.Utils;
 public static class ListHelper
 {
     /// <summary>
-    /// 判断ObservableCollection中是否存在，不存在则添加
+    ///     判断ObservableCollection中是否存在，不存在则添加
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="list"></param>
@@ -19,7 +19,7 @@ public static class ListHelper
     }
 
     /// <summary>
-    /// 判断List中是否存在，不存在则添加
+    ///     判断List中是否存在，不存在则添加
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="list"></param>
@@ -33,7 +33,7 @@ public static class ListHelper
     }
 
     /// <summary>
-    /// 判断List中是否存在，不存在则添加
+    ///     判断List中是否存在，不存在则添加
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="list"></param>

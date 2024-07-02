@@ -27,7 +27,7 @@ public class TabLeftBanner : BindableBase
 
     private string iconColor;
 
-    public string IconColor
+    public required string IconColor
     {
         get => iconColor;
         set => SetProperty(ref iconColor, value);
@@ -35,7 +35,7 @@ public class TabLeftBanner : BindableBase
 
     private string title;
 
-    public string Title
+    public required string Title
     {
         get => title;
         set => SetProperty(ref title, value);

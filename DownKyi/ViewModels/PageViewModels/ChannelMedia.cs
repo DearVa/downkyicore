@@ -17,7 +17,7 @@ public class ChannelMedia : BindableBase
     }
 
     public long Avid { get; set; }
-    public string Bvid { get; set; }
+    public required string Bvid { get; set; }
 
     #region 页面属性申明
 
@@ -39,7 +39,7 @@ public class ChannelMedia : BindableBase
 
     private string title;
 
-    public string Title
+    public required string Title
     {
         get => title;
         set => SetProperty(ref title, value);
@@ -47,7 +47,7 @@ public class ChannelMedia : BindableBase
 
     private string duration;
 
-    public string Duration
+    public required string Duration
     {
         get => duration;
         set => SetProperty(ref duration, value);
@@ -55,7 +55,7 @@ public class ChannelMedia : BindableBase
 
     private string playNumber;
 
-    public string PlayNumber
+    public required string PlayNumber
     {
         get => playNumber;
         set => SetProperty(ref playNumber, value);
@@ -63,7 +63,7 @@ public class ChannelMedia : BindableBase
 
     private string createTime;
 
-    public string CreateTime
+    public required string CreateTime
     {
         get => createTime;
         set => SetProperty(ref createTime, value);

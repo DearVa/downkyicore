@@ -15,7 +15,7 @@ public class VideoQuality : BindableBase
 
     private string qualityFormat;
 
-    public string QualityFormat
+    public required string QualityFormat
     {
         get => qualityFormat;
         set => SetProperty(ref qualityFormat, value);
@@ -23,7 +23,7 @@ public class VideoQuality : BindableBase
 
     private List<string> videoCodecList;
 
-    public List<string> VideoCodecList
+    public required List<string> VideoCodecList
     {
         get => videoCodecList;
         set => SetProperty(ref videoCodecList, value);
@@ -31,7 +31,7 @@ public class VideoQuality : BindableBase
 
     private string selectedVideoCodec;
 
-    public string SelectedVideoCodec
+    public required string SelectedVideoCodec
     {
         get => selectedVideoCodec;
         set

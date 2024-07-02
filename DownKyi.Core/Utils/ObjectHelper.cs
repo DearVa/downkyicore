@@ -1,16 +1,12 @@
-﻿using System.Collections;
-using System.Net;
-using System.Reflection;
-using System.Runtime.Serialization.Formatters.Binary;
-using DownKyi.Core.Logging;
-using Console = DownKyi.Core.Utils.Debugging.Console;
+﻿using System.Net;
+using System.Text.Json;
 
 namespace DownKyi.Core.Utils;
 
 public static class ObjectHelper
 {
     /// <summary>
-    /// 解析二维码登录返回的url，用于设置cookie
+    ///     解析二维码登录返回的url，用于设置cookie
     /// </summary>
     /// <param name="url"></param>
     /// <returns></returns>
@@ -18,7 +14,7 @@ public static class ObjectHelper
     {
         var cookieContainer = new CookieContainer();
 
-        if (url is null or "")
+        if (string.IsNullOrWhiteSpace(url))
         {
             return cookieContainer;
         }
@@ -36,9 +32,16 @@ public static class ObjectHelper
         }
 
         // 获取expires
-        var expires = strList2.FirstOrDefault(it => it.Contains("Expires")).Split('=')[1];
-        var dateTime = DateTime.Now;
-        dateTime = dateTime.AddSeconds(int.Parse(expires));
+        var expires = strList2.FirstOrDefault(it => it.Contains("expires", StringComparison.OrdinalIgnoreCase))?.Split('=')[1];
+        DateTime dateTime;
+        if (expires == null)
+        {
+            dateTime = DateTime.MaxValue;
+        }
+        else
+        {
+            dateTime = DateTime.Now.AddSeconds(int.Parse(expires));
+        }
 
         foreach (var item in strList2)
         {
@@ -52,53 +55,20 @@ public static class ObjectHelper
             var value = strList3[1];
 
             // 不需要
-            if (name == "Expires" || name == "gourl")
+            if (name.Equals("expires", StringComparison.OrdinalIgnoreCase) || name.Equals("gourl", StringComparison.OrdinalIgnoreCase))
             {
                 continue;
             }
 
             // 添加cookie
-            cookieContainer.Add(
-                new Cookie(name, value.Replace(",", "%2c"), "/", ".bilibili.com") { Expires = dateTime });
-            Console.PrintLine(name + ": " + value + "\t" + cookieContainer.Count);
+            cookieContainer.Add(new Cookie(name, value.Replace(",", "%2c"), "/", ".bilibili.com") { Expires = dateTime });
         }
 
         return cookieContainer;
     }
 
     /// <summary>
-    /// 将CookieContainer中的所有的Cookie读出来
-    /// </summary>
-    /// <param name="cc"></param>
-    /// <returns></returns>
-    public static List<Cookie> GetAllCookies(CookieContainer cc)
-    {
-        var lstCookies = new List<Cookie>();
-
-        var table = (Hashtable)cc.GetType().InvokeMember("m_domainTable",
-            BindingFlags.NonPublic | BindingFlags.GetField |
-            BindingFlags.Instance, null, cc, new object[] { });
-
-        foreach (var pathList in table.Values)
-        {
-            var lstCookieCol = (SortedList)pathList.GetType().InvokeMember("m_list",
-                BindingFlags.NonPublic | BindingFlags.GetField
-                                       | BindingFlags.Instance, null, pathList,
-                new object[] { });
-            foreach (CookieCollection colCookies in lstCookieCol.Values)
-            {
-                foreach (Cookie c in colCookies)
-                {
-                    lstCookies.Add(c);
-                }
-            }
-        }
-
-        return lstCookies;
-    }
-
-    /// <summary>
-    /// 写入cookies到磁盘
+    ///     写入cookies到磁盘
     /// </summary>
     /// <param name="file"></param>
     /// <param name="cookieJar"></param>
@@ -109,74 +79,66 @@ public static class ObjectHelper
     }
 
     /// <summary>
-    /// 从磁盘读取cookie
+    ///     从磁盘读取cookie
     /// </summary>
     /// <param name="file"></param>
     /// <returns></returns>
     public static CookieContainer ReadCookiesFromDisk(string file)
     {
-        return (CookieContainer)ReadObjectFromDisk(file);
+        return ReadObjectFromDisk<CookieContainer>(file);
     }
 
     /// <summary>
-    /// 写入序列化对象到磁盘
+    ///     写入序列化对象到磁盘
     /// </summary>
     /// <param name="file"></param>
     /// <param name="obj"></param>
     /// <returns></returns>
-    public static bool WriteObjectToDisk(string file, object obj)
+    public static bool WriteObjectToDisk<T>(string file, T obj)
     {
         try
         {
             using Stream stream = File.Create(file);
-            Console.PrintLine("Writing object to disk... ");
+            Console.Error.WriteLine("Writing object to disk... ");
+            JsonSerializer.Serialize(stream, obj);
 
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(stream, obj);
-
-            Console.PrintLine("Done.");
+            Console.Error.WriteLine("Done.");
             return true;
         }
         catch (IOException e)
         {
-            Console.PrintLine("WriteObjectToDisk()发生IO异常: {0}", e);
-            LogManager.Error(e);
-            return false;
+            Console.Error.WriteLine("WriteObjectToDisk()发生IO异常: {0}", e);
+                        return false;
         }
         catch (Exception e)
         {
-            Console.PrintLine("WriteObjectToDisk()发生异常: {0}", e);
-            LogManager.Error(e);
-            return false;
+            Console.Error.WriteLine("WriteObjectToDisk()发生异常: {0}", e);
+                        return false;
         }
     }
 
     /// <summary>
-    /// 从磁盘读取序列化对象
+    ///     从磁盘读取序列化对象
     /// </summary>
     /// <param name="file"></param>
     /// <returns></returns>
-    public static object ReadObjectFromDisk(string file)
+    public static T? ReadObjectFromDisk<T>(string file) where T : class
     {
         try
         {
             using Stream stream = File.Open(file, FileMode.Open);
-            Console.PrintLine("Reading object from disk... ");
-            var formatter = new BinaryFormatter();
-            Console.PrintLine("Done.");
-            return formatter.Deserialize(stream);
+            Console.Error.WriteLine("Reading object from disk... ");
+            return JsonSerializer.Deserialize<T>(stream);
         }
         catch (IOException e)
         {
-            Console.PrintLine("ReadObjectFromDisk()发生IO异常: {0}", e);
-            LogManager.Error(e);
-            return null;
+            Console.Error.WriteLine("ReadObjectFromDisk()发生IO异常: {0}", e);
+                        return null;
         }
         catch (Exception e)
         {
-            Console.PrintLine("ReadObjectFromDisk()发生异常: {0}", e);
-            LogManager.Error(e);
-            return null;
+            Console.Error.WriteLine("ReadObjectFromDisk()发生异常: {0}", e);
+                        return null;
         }
     }
 }

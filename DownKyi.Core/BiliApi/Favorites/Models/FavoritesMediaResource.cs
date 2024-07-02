@@ -1,23 +1,23 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Favorites.Models;
 
 // https://api.bilibili.com/x/v3/fav/resource/list
 public class FavoritesMediaResourceOrigin : BaseModel
 {
-    //[JsonProperty("code")]
+    //[JsonPropertyName("code")]
     //public int Code { get; set; }
-    //[JsonProperty("message")]
-    //public string Message { get; set; }
-    //[JsonProperty("ttl")]
+    //[JsonPropertyName("message")]
+    //public required stringMessage { get; set; }
+    //[JsonPropertyName("ttl")]
     //public int Ttl { get; set; }
-    [JsonProperty("data")] public FavoritesMediaResource Data { get; set; }
+    [JsonPropertyName("data")] public required FavoritesMediaResource Data { get; set; }
 }
 
 public class FavoritesMediaResource : BaseModel
 {
-    [JsonProperty("info")] public FavoritesMetaInfo Info { get; set; }
-    [JsonProperty("medias")] public List<FavoritesMedia> Medias { get; set; }
-    [JsonProperty("has_more")] public bool HasMore { get; set; }
+    [JsonPropertyName("info")] public required FavoritesMetaInfo Info { get; set; }
+    [JsonPropertyName("medias")] public required List<FavoritesMedia> Medias { get; set; }
+    [JsonPropertyName("has_more")] public bool HasMore { get; set; }
 }

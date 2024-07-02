@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace DownKyi.Core.BiliApi.Models;
 
 public class Dimension : BaseModel
 {
-    [JsonProperty("width")] public int Width { get; set; }
-    [JsonProperty("height")] public int Height { get; set; }
-    [JsonProperty("rotate")] public int Rotate { get; set; }
+    [JsonPropertyName("width")] public int Width { get; set; }
+    [JsonPropertyName("height")] public int Height { get; set; }
+    [JsonPropertyName("rotate")] public int Rotate { get; set; }
 }

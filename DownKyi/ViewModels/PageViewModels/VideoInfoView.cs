@@ -5,7 +5,7 @@ namespace DownKyi.ViewModels.PageViewModels;
 
 public class VideoInfoView : BindableBase
 {
-    public string CoverUrl { get; set; }
+    public required string CoverUrl { get; set; }
     public long UpperMid { get; set; }
     public int TypeId { get; set; }
 
@@ -19,7 +19,7 @@ public class VideoInfoView : BindableBase
 
     private string title;
 
-    public string Title
+    public required string Title
     {
         get => title;
         set => SetProperty(ref title, value);
@@ -27,7 +27,7 @@ public class VideoInfoView : BindableBase
 
     private string videoZone;
 
-    public string VideoZone
+    public required string VideoZone
     {
         get => videoZone;
         set => SetProperty(ref videoZone, value);
@@ -35,7 +35,7 @@ public class VideoInfoView : BindableBase
 
     private string createTime;
 
-    public string CreateTime
+    public required string CreateTime
     {
         get => createTime;
         set => SetProperty(ref createTime, value);
@@ -43,7 +43,7 @@ public class VideoInfoView : BindableBase
 
     private string playNumber;
 
-    public string PlayNumber
+    public required string PlayNumber
     {
         get => playNumber;
         set => SetProperty(ref playNumber, value);
@@ -51,7 +51,7 @@ public class VideoInfoView : BindableBase
 
     private string danmakuNumber;
 
-    public string DanmakuNumber
+    public required string DanmakuNumber
     {
         get => danmakuNumber;
         set => SetProperty(ref danmakuNumber, value);
@@ -59,7 +59,7 @@ public class VideoInfoView : BindableBase
 
     private string likeNumber;
 
-    public string LikeNumber
+    public required string LikeNumber
     {
         get => likeNumber;
         set => SetProperty(ref likeNumber, value);
@@ -67,7 +67,7 @@ public class VideoInfoView : BindableBase
 
     private string coinNumber;
 
-    public string CoinNumber
+    public required string CoinNumber
     {
         get => coinNumber;
         set => SetProperty(ref coinNumber, value);
@@ -75,7 +75,7 @@ public class VideoInfoView : BindableBase
 
     private string favoriteNumber;
 
-    public string FavoriteNumber
+    public required string FavoriteNumber
     {
         get => favoriteNumber;
         set => SetProperty(ref favoriteNumber, value);
@@ -83,7 +83,7 @@ public class VideoInfoView : BindableBase
 
     private string shareNumber;
 
-    public string ShareNumber
+    public required string ShareNumber
     {
         get => shareNumber;
         set => SetProperty(ref shareNumber, value);
@@ -91,7 +91,7 @@ public class VideoInfoView : BindableBase
 
     private string replyNumber;
 
-    public string ReplyNumber
+    public required string ReplyNumber
     {
         get => replyNumber;
         set => SetProperty(ref replyNumber, value);
@@ -99,7 +99,7 @@ public class VideoInfoView : BindableBase
 
     private string description;
 
-    public string Description
+    public required string Description
     {
         get => description;
         set => SetProperty(ref description, value);
@@ -107,7 +107,7 @@ public class VideoInfoView : BindableBase
 
     private string upName;
 
-    public string UpName
+    public required string UpName
     {
         get => upName;
         set => SetProperty(ref upName, value);

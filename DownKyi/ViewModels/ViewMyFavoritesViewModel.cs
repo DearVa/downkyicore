@@ -39,7 +39,7 @@ public class ViewMyFavoritesViewModel : ViewModelBase
 
     private string pageName = Tag;
 
-    public string PageName
+    public required string PageName
     {
         get => pageName;
         set => SetProperty(ref pageName, value);

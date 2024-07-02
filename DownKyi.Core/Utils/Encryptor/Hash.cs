@@ -6,7 +6,7 @@ namespace DownKyi.Core.Utils.Encryptor;
 public static class Hash
 {
     /// <summary>
-    /// 计算字符串MD5值
+    ///     计算字符串MD5值
     /// </summary>
     /// <param name="input"></param>
     /// <returns></returns>
@@ -36,7 +36,7 @@ public static class Hash
     }
 
     /// <summary>
-    /// 计算文件MD5值
+    ///     计算文件MD5值
     /// </summary>
     /// <param name="fileName"></param>
     /// <returns></returns>

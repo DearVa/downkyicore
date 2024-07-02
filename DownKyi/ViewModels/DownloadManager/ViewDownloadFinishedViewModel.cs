@@ -147,9 +147,8 @@ namespace DownKyi.ViewModels.DownloadManager
             }
             catch (Exception e)
             {
-                Console.PrintLine("SetDialogService()发生异常: {0}", e);
-                LogManager.Error($"{Tag}.SetDialogService()", e);
-            }
+                Console.Error.WriteLine("SetDialogService()发生异常: {0}", e);
+                            }
         }
 
         public override void OnNavigatedFrom(NavigationContext navigationContext)

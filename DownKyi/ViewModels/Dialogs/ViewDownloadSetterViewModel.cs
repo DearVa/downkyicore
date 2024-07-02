@@ -49,7 +49,7 @@ public class ViewDownloadSetterViewModel : BaseDialogViewModel
 
     private List<string> _directoryList;
 
-    public List<string> DirectoryList
+    public required List<string> DirectoryList
     {
         get => _directoryList;
         set => SetProperty(ref _directoryList, value);
@@ -57,7 +57,7 @@ public class ViewDownloadSetterViewModel : BaseDialogViewModel
 
     private string _directory;
 
-    public string Directory
+    public required stringDirectory
     {
         get => _directory;
         set
@@ -72,7 +72,7 @@ public class ViewDownloadSetterViewModel : BaseDialogViewModel
 
     private string _driveName;
 
-    public string DriveName
+    public required string DriveName
     {
         get => _driveName;
         set => SetProperty(ref _driveName, value);
@@ -80,7 +80,7 @@ public class ViewDownloadSetterViewModel : BaseDialogViewModel
 
     private string _driveNameFreeSpace;
 
-    public string DriveNameFreeSpace
+    public required string DriveNameFreeSpace
     {
         get => _driveNameFreeSpace;
         set => SetProperty(ref _driveNameFreeSpace, value);

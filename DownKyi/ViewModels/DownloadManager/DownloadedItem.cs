@@ -35,7 +35,7 @@ namespace DownKyi.ViewModels.DownloadManager
         public Downloaded Downloaded { get; set; }
 
         //  下载速度
-        public string MaxSpeedDisplay
+        public required stringMaxSpeedDisplay
         {
             get => Downloaded.MaxSpeedDisplay;
             set
@@ -46,7 +46,7 @@ namespace DownKyi.ViewModels.DownloadManager
         }
 
         // 完成时间
-        public string FinishedTime
+        public required string FinishedTime
         {
             get => Downloaded.FinishedTime;
             set

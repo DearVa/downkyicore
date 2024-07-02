@@ -31,7 +31,7 @@ public class ViewFollowerViewModel : ViewModelBase
 
     private string _pageName = ViewFriendsViewModel.Tag;
 
-    public string PageName
+    public required stringPageName
     {
         get => _pageName;
         set => SetProperty(ref _pageName, value);

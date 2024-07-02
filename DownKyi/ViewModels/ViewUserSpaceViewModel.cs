@@ -78,7 +78,7 @@ public class ViewUserSpaceViewModel : ViewModelBase
 
     private string _topNavigationBg;
 
-    public string TopNavigationBg
+    public required string TopNavigationBg
     {
         get => _topNavigationBg;
         set => SetProperty(ref _topNavigationBg, value);
@@ -102,7 +102,7 @@ public class ViewUserSpaceViewModel : ViewModelBase
 
     private string _userName;
 
-    public string UserName
+    public required string UserName
     {
         get => _userName;
         set => SetProperty(ref _userName, value);
@@ -134,7 +134,7 @@ public class ViewUserSpaceViewModel : ViewModelBase
 
     private string _vipType;
 
-    public string VipType
+    public required string VipType
     {
         get => _vipType;
         set => SetProperty(ref _vipType, value);
@@ -142,7 +142,7 @@ public class ViewUserSpaceViewModel : ViewModelBase
 
     private string _sign;
 
-    public string Sign
+    public required string Sign
     {
         get => _sign;
         set => SetProperty(ref _sign, value);
@@ -150,7 +150,7 @@ public class ViewUserSpaceViewModel : ViewModelBase
 
     private string _isFollowed;
 
-    public string IsFollowed
+    public required string IsFollowed
     {
         get => _isFollowed;
         set => SetProperty(ref _isFollowed, value);

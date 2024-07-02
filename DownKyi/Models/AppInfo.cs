@@ -5,9 +5,9 @@ namespace DownKyi.Models;
 
 public class AppInfo
 {
-    public string Name { get; } = "哔哩下载姬";
+    public required string Name { get; } = "哔哩下载姬";
     public int VersionCode { get; }
-    public string VersionName { get; }
+    public required string VersionName { get; }
 
     private const int A = 1;
     private const int B = 0;

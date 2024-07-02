@@ -1,36 +1,36 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Bangumi.Models;
 
 // https://api.bilibili.com/pgc/review/user
 public class BangumiMediaOrigin : BaseModel
 {
-    //[JsonProperty("code")]
+    //[JsonPropertyName("code")]
     //public int Code { get; set; }
-    //[JsonProperty("message")]
-    //public string Message { get; set; }
-    //[JsonProperty("ttl")]
+    //[JsonPropertyName("message")]
+    //public required stringMessage { get; set; }
+    //[JsonPropertyName("ttl")]
     //public int Ttl { get; set; }
-    [JsonProperty("result")] public BangumiMediaData Result { get; set; }
+    [JsonPropertyName("result")] public required BangumiMediaData Result { get; set; }
 }
 
 public class BangumiMediaData : BaseModel
 {
-    [JsonProperty("media")] public BangumiMedia Media { get; set; }
+    [JsonPropertyName("media")] public required BangumiMedia Media { get; set; }
 }
 
 public class BangumiMedia : BaseModel
 {
-    [JsonProperty("areas")] public List<BangumiArea> Areas { get; set; }
-    [JsonProperty("cover")] public string Cover { get; set; }
+    [JsonPropertyName("areas")] public required List<BangumiArea> Areas { get; set; }
+    [JsonPropertyName("cover")] public required string Cover { get; set; }
 
-    [JsonProperty("media_id")] public long MediaId { get; set; }
+    [JsonPropertyName("media_id")] public long MediaId { get; set; }
 
     // new_ep
     // rating
-    [JsonProperty("season_id")] public long SeasonId { get; set; }
-    [JsonProperty("share_url")] public string ShareUrl { get; set; }
-    [JsonProperty("title")] public string Title { get; set; }
-    [JsonProperty("type_name")] public string TypeName { get; set; }
+    [JsonPropertyName("season_id")] public long SeasonId { get; set; }
+    [JsonPropertyName("share_url")] public required string ShareUrl { get; set; }
+    [JsonPropertyName("title")] public required string Title { get; set; }
+    [JsonPropertyName("type_name")] public required string TypeName { get; set; }
 }

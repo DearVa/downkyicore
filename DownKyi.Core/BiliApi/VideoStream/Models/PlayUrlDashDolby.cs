@@ -1,11 +1,11 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.VideoStream.Models;
 
 public class PlayUrlDashDolby : BaseModel
 {
     // type
-    [JsonProperty("audio")]
-    public List<PlayUrlDashVideo> Audio { get; set; }
+    [JsonPropertyName("audio")]
+    public required List<PlayUrlDashVideo> Audio { get; set; }
 }

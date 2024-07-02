@@ -355,7 +355,7 @@ public class AriaDownloadService : DownloadService, IDownloadService
             new Action<string>((output) => { errorMessage += output + "\n"; }));
         if (task)
         {
-            Console.WriteLine("Start ServerAsync Completed");
+            Console.Error.WriteLine("Start ServerAsync Completed");
         }
 
         // 显示错误信息
@@ -377,7 +377,7 @@ public class AriaDownloadService : DownloadService, IDownloadService
             await Task.Delay(1000);
         }
 
-        Console.WriteLine("Start ServerAsync end");
+        Console.Error.WriteLine("Start ServerAsync end");
     }
 
     /// <summary>
@@ -388,13 +388,13 @@ public class AriaDownloadService : DownloadService, IDownloadService
         // 暂停所有下载
         var ariaPause = await AriaClient.PauseAllAsync();
 #if DEBUG
-        Core.Utils.Debugging.Console.PrintLine(ariaPause.ToString());
+        Core.Utils.Debugging.Console.Error.WriteLine(ariaPause.ToString());
 #endif
 
         // 关闭服务器
         bool close = AriaServer.CloseServer();
 #if DEBUG
-        Core.Utils.Debugging.Console.PrintLine(close);
+        Core.Utils.Debugging.Console.Error.WriteLine(close);
 #endif
     }
 
@@ -494,9 +494,8 @@ public class AriaDownloadService : DownloadService, IDownloadService
         }
         catch (InvalidOperationException e)
         {
-            Core.Utils.Debugging.Console.PrintLine("AriaTellStatus()发生异常: {0}", e);
-            LogManager.Error("AriaTellStatus()", e);
-        }
+            Core.Utils.Debugging.Console.Error.WriteLine("AriaTellStatus()发生异常: {0}", e);
+                    }
 
         if (video == null)
         {

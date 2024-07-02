@@ -22,7 +22,7 @@ public class ViewExtractMediaViewModel : ViewModelBase
 
     private string _videoPathsStr;
 
-    public string VideoPathsStr
+    public required string VideoPathsStr
     {
         get => _videoPathsStr;
         set => SetProperty(ref _videoPathsStr, value);
@@ -42,7 +42,7 @@ public class ViewExtractMediaViewModel : ViewModelBase
 
     private string _status;
 
-    public string Status
+    public required string Status
     {
         get => _status;
         set => SetProperty(ref _status, value);

@@ -1,15 +1,15 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Cheese.Models;
 
 public class CheeseUpInfo : BaseModel
 {
-    [JsonProperty("avatar")] public string Avatar { get; set; }
-    [JsonProperty("brief")] public string Brief { get; set; }
-    [JsonProperty("follower")] public long Follower { get; set; }
-    [JsonProperty("is_follow")] public int IsFollow { get; set; }
-    [JsonProperty("link")] public string Link { get; set; }
-    [JsonProperty("mid")] public long Mid { get; set; }
-    [JsonProperty("uname")] public string Name { get; set; }
+    [JsonPropertyName("avatar")] public required string Avatar { get; set; }
+    [JsonPropertyName("brief")] public required string Brief { get; set; }
+    [JsonPropertyName("follower")] public long Follower { get; set; }
+    [JsonPropertyName("is_follow")] public int IsFollow { get; set; }
+    [JsonPropertyName("link")] public required string Link { get; set; }
+    [JsonPropertyName("mid")] public long Mid { get; set; }
+    [JsonPropertyName("uname")] public required string Name { get; set; }
 }

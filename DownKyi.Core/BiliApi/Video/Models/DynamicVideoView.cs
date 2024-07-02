@@ -1,31 +1,31 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Video.Models;
 
 public class DynamicVideoView : BaseModel
 {
-    [JsonProperty("aid")] public long Aid { get; set; }
-    [JsonProperty("videos")] public int Videos { get; set; }
-    [JsonProperty("tid")] public int Tid { get; set; }
-    [JsonProperty("tname")] public string Tname { get; set; }
-    [JsonProperty("copyright")] public int Copyright { get; set; }
-    [JsonProperty("pic")] public string Pic { get; set; }
-    [JsonProperty("title")] public string Title { get; set; }
-    [JsonProperty("pubdate")] public long Pubdate { get; set; }
-    [JsonProperty("ctime")] public long Ctime { get; set; }
-    [JsonProperty("desc")] public string Desc { get; set; }
-    [JsonProperty("state")] public int State { get; set; }
-    [JsonProperty("duration")] public long Duration { get; set; }
-    [JsonProperty("owner")] public VideoOwner Owner { get; set; }
-    [JsonProperty("stat")] public VideoStat Stat { get; set; }
-    [JsonProperty("dynamic")] public string Dynamic { get; set; }
-    [JsonProperty("cid")] public long Cid { get; set; }
-    [JsonProperty("dimension")] public Dimension Dimension { get; set; }
-    [JsonProperty("short_link")] public string ShortLink { get; set; }
-    [JsonProperty("short_link_v2")] public string ShortLinkV2 { get; set; }
-    [JsonProperty("first_frame")] public string FirstFrame { get; set; }
-    [JsonProperty("bvid")] public string Bvid { get; set; }
-    [JsonProperty("season_type")] public int SeasonType { get; set; }
-    [JsonProperty("is_ogv")] public bool IsOgv { get; set; }
+    [JsonPropertyName("aid")] public long Aid { get; set; }
+    [JsonPropertyName("videos")] public int Videos { get; set; }
+    [JsonPropertyName("tid")] public int Tid { get; set; }
+    [JsonPropertyName("tname")] public required string Tname { get; set; }
+    [JsonPropertyName("copyright")] public int Copyright { get; set; }
+    [JsonPropertyName("pic")] public required string Pic { get; set; }
+    [JsonPropertyName("title")] public required string Title { get; set; }
+    [JsonPropertyName("pubdate")] public long Pubdate { get; set; }
+    [JsonPropertyName("ctime")] public long Ctime { get; set; }
+    [JsonPropertyName("desc")] public required string Desc { get; set; }
+    [JsonPropertyName("state")] public int State { get; set; }
+    [JsonPropertyName("duration")] public long Duration { get; set; }
+    [JsonPropertyName("owner")] public required VideoOwner Owner { get; set; }
+    [JsonPropertyName("stat")] public required VideoStat Stat { get; set; }
+    [JsonPropertyName("dynamic")] public required string Dynamic { get; set; }
+    [JsonPropertyName("cid")] public long Cid { get; set; }
+    [JsonPropertyName("dimension")] public required Dimension Dimension { get; set; }
+    [JsonPropertyName("short_link")] public required string ShortLink { get; set; }
+    [JsonPropertyName("short_link_v2")] public required string ShortLinkV2 { get; set; }
+    [JsonPropertyName("first_frame")] public required string FirstFrame { get; set; }
+    [JsonPropertyName("bvid")] public required string Bvid { get; set; }
+    [JsonPropertyName("season_type")] public int SeasonType { get; set; }
+    [JsonPropertyName("is_ogv")] public bool IsOgv { get; set; }
 }

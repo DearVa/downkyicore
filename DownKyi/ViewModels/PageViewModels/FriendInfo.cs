@@ -29,7 +29,7 @@ public class FriendInfo : BindableBase
 
     private string name;
 
-    public string Name
+    public required string Name
     {
         get => name;
         set => SetProperty(ref name, value);
@@ -37,7 +37,7 @@ public class FriendInfo : BindableBase
 
     private string sign;
 
-    public string Sign
+    public required string Sign
     {
         get => sign;
         set => SetProperty(ref sign, value);

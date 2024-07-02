@@ -1,36 +1,36 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Cheese.Models;
 
 // https://api.bilibili.com/pugv/view/web/season
 public class CheeseViewOrigin : BaseModel
 {
-    //[JsonProperty("code")]
+    //[JsonPropertyName("code")]
     //public int Code { get; set; }
-    //[JsonProperty("message")]
-    //public string Message { get; set; }
-    [JsonProperty("data")] public CheeseView Data { get; set; }
+    //[JsonPropertyName("message")]
+    //public required stringMessage { get; set; }
+    [JsonPropertyName("data")] public CheeseView Data { get; set; }
 }
 
 public class CheeseView : BaseModel
 {
     // active_market
     // activity_list
-    [JsonProperty("brief")] public CheeseBrief Brief { get; set; }
+    [JsonPropertyName("brief")] public CheeseBrief Brief { get; set; }
 
     // cooperation
     // coupon
     // course_content
     // courses
-    [JsonProperty("cover")] public string Cover { get; set; }
+    [JsonPropertyName("cover")] public required string Cover { get; set; }
 
     // ep_catalogue
     // ep_count
     // episode_page
     // episode_sort
     // episode_tag
-    [JsonProperty("episodes")] public List<CheeseEpisode> Episodes { get; set; }
+    [JsonPropertyName("episodes")] public required List<CheeseEpisode> Episodes { get; set; }
 
     // faq
     // faq1
@@ -46,18 +46,18 @@ public class CheeseView : BaseModel
     // release_info
     // release_info2
     // release_status
-    [JsonProperty("season_id")] public long SeasonId { get; set; }
+    [JsonPropertyName("season_id")] public long SeasonId { get; set; }
 
-    [JsonProperty("share_url")] public string ShareUrl { get; set; }
+    [JsonPropertyName("share_url")] public required string ShareUrl { get; set; }
 
     // short_link
-    [JsonProperty("stat")] public CheeseStat Stat { get; set; }
+    [JsonPropertyName("stat")] public CheeseStat Stat { get; set; }
 
     // status
-    [JsonProperty("subtitle")] public string Subtitle { get; set; }
-    [JsonProperty("title")] public string Title { get; set; }
+    [JsonPropertyName("subtitle")] public required string Subtitle { get; set; }
+    [JsonPropertyName("title")] public required string Title { get; set; }
 
-    [JsonProperty("up_info")] public CheeseUpInfo UpInfo { get; set; }
+    [JsonPropertyName("up_info")] public CheeseUpInfo UpInfo { get; set; }
     // update_status
     // user_status
 }

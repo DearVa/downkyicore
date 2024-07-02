@@ -1,17 +1,17 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Users.Models;
 
 public class SpaceCheese : BaseModel
 {
-    [JsonProperty("cover")] public string Cover { get; set; }
-    [JsonProperty("ep_count")] public int EpCount { get; set; }
-    [JsonProperty("link")] public string Link { get; set; }
-    [JsonProperty("page")] public int Page { get; set; }
-    [JsonProperty("play")] public int Play { get; set; }
-    [JsonProperty("season_id")] public long SeasonId { get; set; }
-    [JsonProperty("status")] public string Status { get; set; }
-    [JsonProperty("subtitle")] public string SubTitle { get; set; }
-    [JsonProperty("title")] public string Title { get; set; }
+    [JsonPropertyName("cover")] public required string Cover { get; set; }
+    [JsonPropertyName("ep_count")] public int EpCount { get; set; }
+    [JsonPropertyName("link")] public required string Link { get; set; }
+    [JsonPropertyName("page")] public int Page { get; set; }
+    [JsonPropertyName("play")] public int Play { get; set; }
+    [JsonPropertyName("season_id")] public long SeasonId { get; set; }
+    [JsonPropertyName("status")] public required string Status { get; set; }
+    [JsonPropertyName("subtitle")] public required string SubTitle { get; set; }
+    [JsonPropertyName("title")] public required string Title { get; set; }
 }

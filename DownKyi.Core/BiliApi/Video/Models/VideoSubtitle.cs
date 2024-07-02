@@ -1,39 +1,39 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Video.Models;
 
 public class VideoSubtitle : BaseModel
 {
-    [JsonProperty("allow_submit")] public bool AllowSubmit { get; set; }
-    [JsonProperty("list")] public List<Subtitle> List { get; set; }
+    [JsonPropertyName("allow_submit")] public bool AllowSubmit { get; set; }
+    [JsonPropertyName("list")] public List<Subtitle> List { get; set; } = [];
 }
 
 public class Subtitle : BaseModel
 {
-    [JsonProperty("id")] public long Id { get; set; }
-    [JsonProperty("lan")] public string Lan { get; set; }
-    [JsonProperty("lan_doc")] public string LanDoc { get; set; }
-    [JsonProperty("is_lock")] public bool IsLock { get; set; }
-    [JsonProperty("author_mid")] public long AuthorMid { get; set; }
-    [JsonProperty("subtitle_url")] public string SubtitleUrl { get; set; }
-    [JsonProperty("author")] public SubtitleAuthor Author { get; set; }
+    [JsonPropertyName("id")] public long Id { get; set; }
+    [JsonPropertyName("lan")] public string? Lan { get; set; }
+    [JsonPropertyName("lan_doc")] public string? LanDoc { get; set; }
+    [JsonPropertyName("is_lock")] public bool IsLock { get; set; }
+    [JsonPropertyName("author_mid")] public long AuthorMid { get; set; }
+    [JsonPropertyName("subtitle_url")] public string? SubtitleUrl { get; set; }
+    [JsonPropertyName("author")] public SubtitleAuthor? Author { get; set; }
 }
 
 public class SubtitleAuthor : BaseModel
 {
-    [JsonProperty("mid")] public long Mid { get; set; }
-    [JsonProperty("name")] public string Name { get; set; }
-    [JsonProperty("sex")] public string Sex { get; set; }
-    [JsonProperty("face")] public string Face { get; set; }
+    [JsonPropertyName("mid")] public long Mid { get; set; }
+    [JsonPropertyName("name")] public string? Name { get; set; }
+    [JsonPropertyName("sex")] public string? Sex { get; set; }
+    [JsonPropertyName("face")] public string? Face { get; set; }
 
-    [JsonProperty("sign")] public string Sign { get; set; }
-    //[JsonProperty("rank")]
+    [JsonPropertyName("sign")] public string? Sign { get; set; }
+    //[JsonPropertyName("rank")]
     //public int Rank { get; set; }
-    //[JsonProperty("birthday")]
+    //[JsonPropertyName("birthday")]
     //public int Birthday { get; set; }
-    //[JsonProperty("is_fake_account")]
+    //[JsonPropertyName("is_fake_account")]
     //public int IsFakeAccount { get; set; }
-    //[JsonProperty("is_deleted")]
+    //[JsonPropertyName("is_deleted")]
     //public int IsDeleted { get; set; }
 }

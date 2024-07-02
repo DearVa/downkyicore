@@ -84,7 +84,7 @@ public class ViewBasicViewModel : ViewModelBase
 
     private List<ParseScopeDisplay> _parseScopes;
 
-    public List<ParseScopeDisplay> ParseScopes
+    public required List<ParseScopeDisplay> ParseScopes
     {
         get => _parseScopes;
         set => SetProperty(ref _parseScopes, value);
@@ -116,7 +116,7 @@ public class ViewBasicViewModel : ViewModelBase
 
     private List<RepeatDownloadStrategyDisplay> _repeatDownloadStrategy;
 
-    public List<RepeatDownloadStrategyDisplay> RepeatDownloadStrategy
+    public required List<RepeatDownloadStrategyDisplay> RepeatDownloadStrategy
     {
         get => _repeatDownloadStrategy;
         set => SetProperty(ref _repeatDownloadStrategy, value);

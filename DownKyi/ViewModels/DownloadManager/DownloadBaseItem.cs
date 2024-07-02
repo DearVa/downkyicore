@@ -60,7 +60,7 @@ namespace DownKyi.ViewModels.DownloadManager
         }
 
         // 视频主标题
-        public string MainTitle
+        public required string MainTitle
         {
             get => DownloadBase == null ? "" : DownloadBase.MainTitle;
             set
@@ -71,7 +71,7 @@ namespace DownKyi.ViewModels.DownloadManager
         }
 
         // 视频标题
-        public string Name
+        public required string Name
         {
             get => DownloadBase == null ? "" : DownloadBase.Name;
             set
@@ -82,7 +82,7 @@ namespace DownKyi.ViewModels.DownloadManager
         }
 
         // 时长
-        public string Duration
+        public required string Duration
         {
             get => DownloadBase == null ? "" : DownloadBase.Duration;
             set
@@ -93,7 +93,7 @@ namespace DownKyi.ViewModels.DownloadManager
         }
 
         // 视频编码名称，AVC、HEVC
-        public string VideoCodecName
+        public required string VideoCodecName
         {
             get => DownloadBase == null ? "" : DownloadBase.VideoCodecName;
             set
@@ -126,7 +126,7 @@ namespace DownKyi.ViewModels.DownloadManager
         }
 
         // 文件大小
-        public string FileSize
+        public required string FileSize
         {
             get => DownloadBase == null ? "" : DownloadBase.FileSize;
             set

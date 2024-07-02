@@ -17,7 +17,7 @@ public class PublicationZone : BindableBase
 
     private string name;
 
-    public string Name
+    public required string Name
     {
         get => name;
         set => SetProperty(ref name, value);

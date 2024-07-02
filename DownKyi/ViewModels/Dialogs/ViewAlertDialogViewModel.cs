@@ -20,7 +20,7 @@ public class ViewAlertDialogViewModel : BaseDialogViewModel
 
     private string _message;
 
-    public string Message
+    public required string Message
     {
         get => _message;
         set => SetProperty(ref _message, value);

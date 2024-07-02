@@ -1,11 +1,11 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Users.Models;
 
 public class SpacePublicationPage : BaseModel
 {
-    [JsonProperty("pn")] public int Pn { get; set; }
-    [JsonProperty("ps")] public int Ps { get; set; }
-    [JsonProperty("count")] public int Count { get; set; }
+    [JsonPropertyName("pn")] public int Pn { get; set; }
+    [JsonPropertyName("ps")] public int Ps { get; set; }
+    [JsonPropertyName("count")] public int Count { get; set; }
 }

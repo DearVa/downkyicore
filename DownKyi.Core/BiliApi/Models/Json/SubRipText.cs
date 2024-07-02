@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace DownKyi.Core.BiliApi.Models.Json;
 
 public class SubRipText : BaseModel
 {
-    [JsonProperty("lan")] public string Lan { get; set; }
-    [JsonProperty("lan_doc")] public string LanDoc { get; set; }
-    [JsonProperty("srtString")] public string SrtString { get; set; }
+    [JsonPropertyName("lan")] public required string Lan { get; set; }
+    [JsonPropertyName("lan_doc")] public required string LanDoc { get; set; }
+    [JsonPropertyName("srtString")] public required string SrtString { get; set; }
 }

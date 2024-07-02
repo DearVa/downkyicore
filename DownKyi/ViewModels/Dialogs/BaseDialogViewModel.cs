@@ -14,7 +14,7 @@ public class BaseDialogViewModel : BindableBase, IDialogAware
 
     private string _title;
 
-    public string Title
+    public required string Title
     {
         get => _title;
         set => SetProperty(ref _title, value);

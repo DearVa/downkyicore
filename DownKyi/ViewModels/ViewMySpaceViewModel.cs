@@ -86,7 +86,7 @@ public class ViewMySpaceViewModel : ViewModelBase
 
     private string topNavigationBg;
 
-    public string TopNavigationBg
+    public required string TopNavigationBg
     {
         get => topNavigationBg;
         set => SetProperty(ref topNavigationBg, value);
@@ -110,7 +110,7 @@ public class ViewMySpaceViewModel : ViewModelBase
 
     private string userName;
 
-    public string UserName
+    public required string UserName
     {
         get => userName;
         set => SetProperty(ref userName, value);
@@ -142,7 +142,7 @@ public class ViewMySpaceViewModel : ViewModelBase
 
     private string vipType;
 
-    public string VipType
+    public required string VipType
     {
         get => vipType;
         set => SetProperty(ref vipType, value);
@@ -150,7 +150,7 @@ public class ViewMySpaceViewModel : ViewModelBase
 
     private string sign;
 
-    public string Sign
+    public required string Sign
     {
         get => sign;
         set => SetProperty(ref sign, value);
@@ -166,7 +166,7 @@ public class ViewMySpaceViewModel : ViewModelBase
 
     private string coin;
 
-    public string Coin
+    public required string Coin
     {
         get => coin;
         set => SetProperty(ref coin, value);
@@ -182,7 +182,7 @@ public class ViewMySpaceViewModel : ViewModelBase
 
     private string money;
 
-    public string Money
+    public required string Money
     {
         get => money;
         set => SetProperty(ref money, value);
@@ -222,7 +222,7 @@ public class ViewMySpaceViewModel : ViewModelBase
 
     private string levelText;
 
-    public string LevelText
+    public required string LevelText
     {
         get => levelText;
         set => SetProperty(ref levelText, value);
@@ -230,7 +230,7 @@ public class ViewMySpaceViewModel : ViewModelBase
 
     private string currentExp;
 
-    public string CurrentExp
+    public required string CurrentExp
     {
         get => currentExp;
         set => SetProperty(ref currentExp, value);

@@ -1,14 +1,20 @@
-﻿using System.IO.Compression;
-using System.Net;
+﻿using System.Net;
 using System.Text;
-using DownKyi.Core.BiliApi.Login;
-using DownKyi.Core.Logging;
+using System.Text.Json;
 using DownKyi.Core.Settings;
 
 namespace DownKyi.Core.BiliApi;
 
 internal static class WebClient
 {
+    private readonly static HttpClient HttpClient = new(new HttpClientHandler
+    {
+        AutomaticDecompression = DecompressionMethods.All,
+    })
+    {
+        Timeout = TimeSpan.FromSeconds(10),
+    };
+
     private static string GetRandomBuvid3()
     {
         // 随机生成10位字符串
@@ -24,21 +30,27 @@ internal static class WebClient
     }
 
     /// <summary>
-    /// 发送get或post请求
+    ///     发送get或post请求
     /// </summary>
     /// <param name="url"></param>
     /// <param name="referer"></param>
     /// <param name="method"></param>
     /// <param name="parameters"></param>
     /// <param name="retry"></param>
+    /// <param name="needRandomBvuid3"></param>
     /// <returns></returns>
-    public static string RequestWeb(string url, string? referer = null, string method = "GET",
-        Dictionary<string, string>? parameters = null, int retry = 3, bool needRandomBvuid3 = false)
+    public async static Task<T> RequestWebAsync<T>(
+        string url,
+        string? referer = null,
+        string method = "GET",
+        Dictionary<string, string>? parameters = null,
+        int retry = 3,
+        bool needRandomBvuid3 = false)
     {
         // 重试次数
         if (retry <= 0)
         {
-            return "";
+            throw new Exception("RequestWebAsync()重试次数已用完");
         }
 
         // post请求，发送参数
@@ -62,117 +74,59 @@ internal static class WebClient
 
         try
         {
-            var request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = method;
-            request.Timeout = 30 * 1000;
-
-            request.UserAgent = SettingsManager.GetInstance().GetUserAgent();
-
-            //request.ContentType = "application/json,text/html,application/xhtml+xml,application/xml;charset=UTF-8";
-            request.Headers["accept-language"] = "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7";
-            request.Headers["accept-encoding"] = "gzip, deflate, br";
+            var request = new HttpRequestMessage
+            {
+                RequestUri = new Uri(url),
+                Method = new HttpMethod(method),
+                Headers =
+                {
+                    { "User-Agent", SettingsManager.AppSettings.Network.UserAgent },
+                    { "accept-language", "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7" },
+                    { "accept-encoding", "gzip, deflate, br" },
+                },
+            };
 
             // referer
             if (referer != null)
             {
-                request.Referer = referer;
+                request.Headers.Add("Referer", referer);
             }
 
             // 构造cookie
             if (!url.Contains("getLogin"))
             {
-                request.Headers["origin"] = "https://m.bilibili.com";
+                request.Headers.Add("origin", "https://m.bilibili.com");
 
-                var cookies = LoginHelper.GetLoginInfoCookies();
+                var cookies = SettingsManager.AppSettings.Network.Cookies;
                 if (cookies != null)
                 {
-                    request.CookieContainer = cookies;
+                    request.Headers.Add("Cookie", string.Join(';', cookies));
                 }
                 else
                 {
-                    request.CookieContainer = new CookieContainer();
-                    if (needRandomBvuid3)
-                    {
-                        request.CookieContainer.Add(new Cookie("buvid3", GetRandomBuvid3(), "/", ".bilibili.com"));
-                    }
+                    request.Headers.Add("Cookie", new Cookie("buvid3", GetRandomBuvid3(), "/", ".bilibili.com").ToString());
                 }
             }
 
-            var html = string.Empty;
-            using var response = (HttpWebResponse)request.GetResponse();
-            if (response.ContentEncoding.ToLower().Contains("gzip"))
-            {
-                using var stream = new GZipStream(response.GetResponseStream(), CompressionMode.Decompress);
-                using var reader = new StreamReader(stream, Encoding.UTF8);
-                html = reader.ReadToEnd();
-            }
-            else if (response.ContentEncoding.ToLower().Contains("deflate"))
-            {
-                using var stream = new DeflateStream(response.GetResponseStream(), CompressionMode.Decompress);
-                using var reader = new StreamReader(stream, Encoding.UTF8);
-                html = reader.ReadToEnd();
-            }
-            else if (response.ContentEncoding.ToLower().Contains("br"))
-            {
-                using var stream = new BrotliStream(response.GetResponseStream(), CompressionMode.Decompress);
-                using var reader = new StreamReader(stream, Encoding.UTF8);
-                html = reader.ReadToEnd();
-            }
-            else
-            {
-                using var stream = response.GetResponseStream();
-                using var reader = new StreamReader(stream, Encoding.UTF8);
-                html = reader.ReadToEnd();
-            }
-
-            return html;
+            using var response = await HttpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            await using var stream = await response.Content.ReadAsStreamAsync();
+            return await JsonSerializer.DeserializeAsync<T>(stream) ?? throw new Exception("RequestWebAsync()反序列化失败");
         }
         catch (WebException e)
         {
-            Console.WriteLine("RequestWeb()发生Web异常: {0}", e);
-            LogManager.Error(e);
-            return RequestWeb(url, referer, method, parameters, retry - 1);
+            Console.Error.WriteLine("RequestWebAsync()发生Web异常: {0}", e);
+            return await RequestWebAsync<T>(url, referer, method, parameters, retry - 1);
         }
         catch (IOException e)
         {
-            Console.WriteLine("RequestWeb()发生IO异常: {0}", e);
-            LogManager.Error(e);
-            return RequestWeb(url, referer, method, parameters, retry - 1);
+            Console.Error.WriteLine("RequestWebAsync()发生IO异常: {0}", e);
+            return await RequestWebAsync<T>(url, referer, method, parameters, retry - 1);
         }
         catch (Exception e)
         {
-            Console.WriteLine("RequestWeb()发生其他异常: {0}", e);
-            LogManager.Error(e);
-            return RequestWeb(url, referer, method, parameters, retry - 1);
+            Console.Error.WriteLine("RequestWebAsync()发生其他异常: {0}", e);
+            return await RequestWebAsync<T>(url, referer, method, parameters, retry - 1);
         }
-    }
-
-    public static void DownloadFile(string url, string destFile, string? referer = null)
-    {
-        var handler = new HttpClientHandler();
-
-        var client = new HttpClient(handler);
-        client.Timeout = TimeSpan.FromSeconds(30);
-        client.DefaultRequestHeaders.Add("User-Agent", SettingsManager.GetInstance().GetUserAgent());
-
-        if (referer != null)
-        {
-            client.DefaultRequestHeaders.Add("Referer", referer);
-        }
-
-        if (!url.Contains("getLogin"))
-        {
-            client.DefaultRequestHeaders.Add("origin", "https://m.bilibili.com");
-            var cookies = LoginHelper.GetLoginInfoCookies();
-            if (cookies != null)
-            {
-                handler.CookieContainer = cookies;
-            }
-        }
-
-        var responseMessage = client.GetAsync(url).Result;
-        if (!responseMessage.IsSuccessStatusCode) return;
-        using var fs = File.Create(destFile);
-        responseMessage.Content.ReadAsStream().CopyTo(fs);
     }
 }

@@ -19,7 +19,7 @@ public class ViewAboutViewModel : ViewModelBase
 
     private string _appName;
 
-    public string AppName
+    public required stringAppName
     {
         get => _appName;
         set => SetProperty(ref _appName, value);
@@ -27,7 +27,7 @@ public class ViewAboutViewModel : ViewModelBase
 
     private string _appVersion;
 
-    public string AppVersion
+    public required string AppVersion
     {
         get => _appVersion;
         set => SetProperty(ref _appVersion, value);

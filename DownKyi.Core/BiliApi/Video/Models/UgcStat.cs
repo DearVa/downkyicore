@@ -1,18 +1,18 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Video.Models;
 
 public class UgcStat : BaseModel
 {
-    [JsonProperty("season_id")] public long SeasonId { get; set; }
-    [JsonProperty("view")] public long View { get; set; }
-    [JsonProperty("danmaku")] public long Danmaku { get; set; }
-    [JsonProperty("reply")] public long Reply { get; set; }
-    [JsonProperty("fav")] public long Favorite { get; set; }
-    [JsonProperty("coin")] public long Coin { get; set; }
-    [JsonProperty("share")] public long Share { get; set; }
-    [JsonProperty("now_rank")] public long NowRank { get; set; }
-    [JsonProperty("his_rank")] public long HisRank { get; set; }
-    [JsonProperty("like")] public long Like { get; set; }
+    [JsonPropertyName("season_id")] public long SeasonId { get; set; }
+    [JsonPropertyName("view")] public long View { get; set; }
+    [JsonPropertyName("danmaku")] public long Danmaku { get; set; }
+    [JsonPropertyName("reply")] public long Reply { get; set; }
+    [JsonPropertyName("fav")] public long Favorite { get; set; }
+    [JsonPropertyName("coin")] public long Coin { get; set; }
+    [JsonPropertyName("share")] public long Share { get; set; }
+    [JsonPropertyName("now_rank")] public long NowRank { get; set; }
+    [JsonPropertyName("his_rank")] public long HisRank { get; set; }
+    [JsonPropertyName("like")] public long Like { get; set; }
 }

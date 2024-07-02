@@ -1,23 +1,19 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
-namespace DownKyi.Core.BiliApi.Login.Models
+namespace DownKyi.Core.BiliApi.Login.Models;
+
+public class LoginStatus : BaseModel
 {
-    [JsonObject]
-    public class LoginStatus : BaseModel
-    {
-        [JsonProperty("code")] public int Code { get; set; }
-        [JsonProperty("message")] public string Message { get; set; }
+    [JsonPropertyName("code")] public int Code { get; set; }
+    [JsonPropertyName("message")] public required string Message { get; set; }
+    [JsonPropertyName("data")] public required LoginStatusData Data { get; set; }
+}
 
-        [JsonProperty("data")] public LoginStatusData Data { get; set; }
-    }
-
-    [JsonObject]
-    public class LoginStatusData : BaseModel
-    {
-        [JsonProperty("url")] public string Url { get; set; }
-        [JsonProperty("refresh_token")] public string RefreshToken { get; set; }
-        [JsonProperty("code")] public int Code { get; set; }
-        [JsonProperty("message")] public string Message { get; set; }
-    }
+public class LoginStatusData : BaseModel
+{
+    [JsonPropertyName("url")] public required string Url { get; set; }
+    [JsonPropertyName("refresh_token")] public required string RefreshToken { get; set; }
+    [JsonPropertyName("code")] public int Code { get; set; }
+    [JsonPropertyName("message")] public required string Message { get; set; }
 }

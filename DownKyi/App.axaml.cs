@@ -151,7 +151,7 @@ public partial class App : PrismApplication
                     {
                         if (item is DownloadingItem downloading)
                         {
-                            //Console.WriteLine("DownloadingList添加");
+                            //Console.Error.WriteLine("DownloadingList添加");
                             downloadStorageService.AddDownloading(downloading);
                         }
                     }
@@ -163,7 +163,7 @@ public partial class App : PrismApplication
                     {
                         if (item is DownloadingItem downloading)
                         {
-                            //Console.WriteLine("DownloadingList移除");
+                            //Console.Error.WriteLine("DownloadingList移除");
                             downloadStorageService.RemoveDownloading(downloading);
                         }
                     }
@@ -182,7 +182,7 @@ public partial class App : PrismApplication
                     {
                         if (item is DownloadedItem downloaded)
                         {
-                            //Console.WriteLine("DownloadedList添加");
+                            //Console.Error.WriteLine("DownloadedList添加");
                             downloadStorageService.AddDownloaded(downloaded);
                         }
                     }
@@ -194,7 +194,7 @@ public partial class App : PrismApplication
                     {
                         if (item is DownloadedItem downloaded)
                         {
-                            //Console.WriteLine("DownloadedList移除");
+                            //Console.Error.WriteLine("DownloadedList移除");
                             downloadStorageService.RemoveDownloaded(downloaded);
                         }
                     }

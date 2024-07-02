@@ -1,66 +1,64 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 
-namespace DownKyi.Core.Aria2cNet.Client.Entity
-{
-    /*
-         {
-        "id": "qwer",
-        "jsonrpc": "2.0",
-        "result": {
-            "downloadSpeed": "0",
-            "numActive": "0",
-            "numStopped": "0",
-            "numStoppedTotal": "0",
-            "numWaiting": "0",
-            "uploadSpeed": "0"
-        }
-        }
-         */
-    [JsonObject]
-    public class AriaGetGlobalStat
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("jsonrpc")]
-        public string Jsonrpc { get; set; }
-
-        [JsonProperty("result")]
-        public AriaGetGlobalStatResult Result { get; set; }
-
-        [JsonProperty("error")]
-        public AriaError Error { get; set; }
-
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
+namespace DownKyi.Core.Aria2cNet.Client.Entity;
+/*
+     {
+    "id": "qwer",
+    "jsonrpc": "2.0",
+    "result": {
+        "downloadSpeed": "0",
+        "numActive": "0",
+        "numStopped": "0",
+        "numStoppedTotal": "0",
+        "numWaiting": "0",
+        "uploadSpeed": "0"
     }
+    }
+     */
 
-    [JsonObject]
-    public class AriaGetGlobalStatResult
+public class AriaGetGlobalStat
+{
+    [JsonPropertyName("id")]
+    public required string Id { get; set; }
+
+    [JsonPropertyName("jsonrpc")]
+    public required string Jsonrpc { get; set; }
+
+    [JsonPropertyName("result")]
+    public required AriaGetGlobalStatResult Result { get; set; }
+
+    [JsonPropertyName("error")]
+    public required AriaError Error { get; set; }
+
+    public override string ToString()
     {
-        [JsonProperty("downloadSpeed")]
-        public string DownloadSpeed { get; set; }
+        return JsonSerializer.Serialize(this);
+    }
+}
 
-        [JsonProperty("numActive")]
-        public string NumActive { get; set; }
+public class AriaGetGlobalStatResult
+{
+    [JsonPropertyName("downloadSpeed")]
+    public required string DownloadSpeed { get; set; }
 
-        [JsonProperty("numStopped")]
-        public string NumStopped { get; set; }
+    [JsonPropertyName("numActive")]
+    public required string NumActive { get; set; }
 
-        [JsonProperty("numStoppedTotal")]
-        public string NumStoppedTotal { get; set; }
+    [JsonPropertyName("numStopped")]
+    public required string NumStopped { get; set; }
 
-        [JsonProperty("numWaiting")]
-        public string NumWaiting { get; set; }
+    [JsonPropertyName("numStoppedTotal")]
+    public required string NumStoppedTotal { get; set; }
 
-        [JsonProperty("uploadSpeed")]
-        public string UploadSpeed { get; set; }
+    [JsonPropertyName("numWaiting")]
+    public required string NumWaiting { get; set; }
 
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
+    [JsonPropertyName("uploadSpeed")]
+    public required string UploadSpeed { get; set; }
+
+    public override string ToString()
+    {
+        return JsonSerializer.Serialize(this);
     }
 }

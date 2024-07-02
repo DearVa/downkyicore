@@ -17,13 +17,13 @@ public class VideoPage : BindableBase
     public PlayUrl PlayUrl { get; set; }
 
     public long Avid { get; set; }
-    public string Bvid { get; set; }
+    public required string Bvid { get; set; }
     public long Cid { get; set; }
     public long EpisodeId { get; set; }
     public VideoOwner Owner { get; set; }
-    public string PublishTime { get; set; }
+    public required string PublishTime { get; set; }
 
-    public string FirstFrame { get; set; }
+    public required string FirstFrame { get; set; }
 
     public int Page { get; set; }
 
@@ -45,7 +45,7 @@ public class VideoPage : BindableBase
 
     private string name;
 
-    public string Name
+    public required string Name
     {
         get => name;
         set => SetProperty(ref name, value);
@@ -53,7 +53,7 @@ public class VideoPage : BindableBase
 
     private string duration;
 
-    public string Duration
+    public required string Duration
     {
         get => duration;
         set => SetProperty(ref duration, value);
@@ -69,7 +69,7 @@ public class VideoPage : BindableBase
 
     private string audioQualityFormat;
 
-    public string AudioQualityFormat
+    public required string AudioQualityFormat
     {
         get => audioQualityFormat;
         set
@@ -83,7 +83,7 @@ public class VideoPage : BindableBase
 
     private List<VideoQuality> videoQualityList;
 
-    public List<VideoQuality> VideoQualityList
+    public required List<VideoQuality> VideoQualityList
     {
         get => videoQualityList;
         set => SetProperty(ref videoQualityList, value);
@@ -120,9 +120,8 @@ public class VideoPage : BindableBase
         // }
         // catch (Exception e)
         // {
-        //     Console.PrintLine("ExecuteVideoQualitySelectedCommand()发生异常: {0}", e);
-        //     LogManager.Error("ExecuteVideoQualitySelectedCommand", e);
-        // }
+        //     Console.Error.WriteLine("ExecuteVideoQualitySelectedCommand()发生异常: {0}", e);
+        //             // }
         //
         // if (VideoQuality != null && VideoQuality.Quality == 126 && PlayUrl != null && PlayUrl.Dash != null &&
         //     PlayUrl.Dash.Dolby != null)

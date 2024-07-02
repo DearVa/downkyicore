@@ -3,7 +3,7 @@
 public static class StorageManager
 {
     /// <summary>
-    /// 获取Aria的文件路径
+    ///     获取Aria的文件路径
     /// </summary>
     /// <returns></returns>
     public static string GetAriaDir()
@@ -13,7 +13,7 @@ public static class StorageManager
     }
 
     /// <summary>
-    /// 获取日志的文件路径
+    ///     获取日志的文件路径
     /// </summary>
     /// <returns></returns>
     public static string GetLogsDir()
@@ -23,7 +23,7 @@ public static class StorageManager
     }
 
     /// <summary>
-    /// 获取历史记录的文件路径
+    ///     获取历史记录的文件路径
     /// </summary>
     /// <returns></returns>
     public static string GetDownload()
@@ -33,7 +33,7 @@ public static class StorageManager
     }
 
     /// <summary>
-    /// 获取历史记录的文件路径
+    ///     获取历史记录的文件路径
     /// </summary>
     /// <returns></returns>
     public static string GetHistory()
@@ -43,7 +43,7 @@ public static class StorageManager
     }
 
     /// <summary>
-    /// 获取设置的文件路径
+    ///     获取设置的文件路径
     /// </summary>
     /// <returns></returns>
     public static string GetSettings()
@@ -53,7 +53,7 @@ public static class StorageManager
     }
 
     /// <summary>
-    /// 获取登录cookies的文件路径
+    ///     获取登录cookies的文件路径
     /// </summary>
     /// <returns></returns>
     public static string GetLogin()
@@ -63,7 +63,7 @@ public static class StorageManager
     }
 
     /// <summary>
-    /// 获取弹幕的文件夹路径
+    ///     获取弹幕的文件夹路径
     /// </summary>
     /// <returns></returns>
     public static string GetDanmaku()
@@ -72,7 +72,7 @@ public static class StorageManager
     }
 
     /// <summary>
-    /// 获取字幕的文件夹路径
+    ///     获取字幕的文件夹路径
     /// </summary>
     /// <returns></returns>
     public static string GetSubtitle()
@@ -81,7 +81,7 @@ public static class StorageManager
     }
 
     /// <summary>
-    /// 获取头图的文件夹路径
+    ///     获取头图的文件夹路径
     /// </summary>
     /// <returns></returns>
     public static string GetToutu()
@@ -90,7 +90,7 @@ public static class StorageManager
     }
 
     /// <summary>
-    /// 获取封面的文件夹路径
+    ///     获取封面的文件夹路径
     /// </summary>
     /// <returns></returns>
     public static string GetCover()
@@ -99,7 +99,7 @@ public static class StorageManager
     }
 
     /// <summary>
-    /// 获取封面索引的文件路径
+    ///     获取封面索引的文件路径
     /// </summary>
     /// <returns></returns>
     public static string GetCoverIndex()
@@ -109,7 +109,7 @@ public static class StorageManager
     }
 
     /// <summary>
-    /// 获取视频快照的文件夹路径
+    ///     获取视频快照的文件夹路径
     /// </summary>
     /// <returns></returns>
     public static string GetSnapshot()
@@ -118,7 +118,7 @@ public static class StorageManager
     }
 
     /// <summary>
-    /// 获取视频快照索引的文件路径
+    ///     获取视频快照索引的文件路径
     /// </summary>
     /// <returns></returns>
     public static string GetSnapshotIndex()
@@ -128,7 +128,7 @@ public static class StorageManager
     }
 
     /// <summary>
-    /// 获取用户头像的文件夹路径
+    ///     获取用户头像的文件夹路径
     /// </summary>
     /// <returns></returns>
     public static string GetHeader()
@@ -137,7 +137,7 @@ public static class StorageManager
     }
 
     /// <summary>
-    /// 获取用户头像索引的文件路径
+    ///     获取用户头像索引的文件路径
     /// </summary>
     /// <returns></returns>
     public static string GetHeaderIndex()
@@ -154,7 +154,7 @@ public static class StorageManager
 
 
     /// <summary>
-    /// 若文件夹不存在，则创建文件夹
+    ///     若文件夹不存在，则创建文件夹
     /// </summary>
     /// <param name="directory"></param>
     /// <returns></returns>

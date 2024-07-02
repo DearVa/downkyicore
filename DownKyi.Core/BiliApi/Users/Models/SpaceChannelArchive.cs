@@ -1,42 +1,42 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Users.Models;
 
 public class SpaceChannelArchive : BaseModel
 {
-    [JsonProperty("aid")] public long Aid { get; set; }
+    [JsonPropertyName("aid")] public long Aid { get; set; }
 
     // videos
-    [JsonProperty("tid")] public int Tid { get; set; }
+    [JsonPropertyName("tid")] public int Tid { get; set; }
 
-    [JsonProperty("tname")] public string Tname { get; set; }
+    [JsonPropertyName("tname")] public required string Tname { get; set; }
 
     // copyright
-    [JsonProperty("pic")] public string Pic { get; set; }
-    [JsonProperty("title")] public string Title { get; set; }
-    [JsonProperty("pubdate")] public long Pubdate { get; set; }
-    [JsonProperty("ctime")] public long Ctime { get; set; }
+    [JsonPropertyName("pic")] public required string Pic { get; set; }
+    [JsonPropertyName("title")] public required string Title { get; set; }
+    [JsonPropertyName("pubdate")] public long Pubdate { get; set; }
+    [JsonPropertyName("ctime")] public long Ctime { get; set; }
 
-    [JsonProperty("desc")] public string Desc { get; set; }
+    [JsonPropertyName("desc")] public required string Desc { get; set; }
 
     // state
-    [JsonProperty("duration")] public long Duration { get; set; }
+    [JsonPropertyName("duration")] public long Duration { get; set; }
 
     // mission_id
     // rights
-    [JsonProperty("owner")] public VideoOwner Owner { get; set; }
+    [JsonPropertyName("owner")] public required VideoOwner Owner { get; set; }
 
-    [JsonProperty("stat")] public SpaceChannelArchiveStat Stat { get; set; }
+    [JsonPropertyName("stat")] public required SpaceChannelArchiveStat Stat { get; set; }
 
     // dynamic
-    [JsonProperty("cid")] public long Cid { get; set; }
+    [JsonPropertyName("cid")] public long Cid { get; set; }
 
-    [JsonProperty("dimension")] public Dimension Dimension { get; set; }
+    [JsonPropertyName("dimension")] public required Dimension Dimension { get; set; }
 
     // season_id
     // short_link_v2
-    [JsonProperty("bvid")] public string Bvid { get; set; }
+    [JsonPropertyName("bvid")] public required string Bvid { get; set; }
     // inter_video
     // is_live_playback
 }

@@ -23,7 +23,7 @@ public class SpaceItem : BindableBase
 
     private string title;
 
-    public string Title
+    public required string Title
     {
         get => title;
         set => SetProperty(ref title, value);
@@ -31,7 +31,7 @@ public class SpaceItem : BindableBase
 
     private string subtitle;
 
-    public string Subtitle
+    public required string Subtitle
     {
         get => subtitle;
         set => SetProperty(ref subtitle, value);

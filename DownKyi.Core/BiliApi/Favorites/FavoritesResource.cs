@@ -1,59 +1,50 @@
 ﻿using DownKyi.Core.BiliApi.Favorites.Models;
-using DownKyi.Core.Logging;
-using Newtonsoft.Json;
 
 namespace DownKyi.Core.BiliApi.Favorites;
 
 public static class FavoritesResource
 {
     /// <summary>
-    /// 获取收藏夹内容明细列表
+    ///     获取收藏夹内容明细列表
     /// </summary>
     /// <param name="mediaId">收藏夹ID</param>
     /// <param name="pn">页码</param>
     /// <param name="ps">每页项数</param>
     /// <returns></returns>
-    public static List<FavoritesMedia> GetFavoritesMedia(long mediaId, int pn, int ps)
+    public async static Task<List<FavoritesMedia>?> GetFavoritesMedia(long mediaId, int pn, int ps)
     {
-        string url =
+        var url =
             $"https://api.bilibili.com/x/v3/fav/resource/list?media_id={mediaId}&pn={pn}&ps={ps}&platform=web";
-        string referer = "https://www.bilibili.com";
-        string response = WebClient.RequestWeb(url, referer);
+        const string referer = "https://www.bilibili.com";
 
         try
         {
-            var resource = JsonConvert.DeserializeObject<FavoritesMediaResourceOrigin>(response);
-            if (resource == null || resource.Data == null || resource.Data.Medias == null)
-            {
-                return null;
-            }
-
+            var resource = await WebClient.RequestWebAsync<FavoritesMediaResourceOrigin>(url, referer);
             return resource.Data.Medias;
         }
         catch (Exception e)
         {
-            Console.WriteLine("GetFavoritesMedia()发生异常: {0}", e);
-            LogManager.Error("FavoritesResource", e);
+            Console.Error.WriteLine("GetFavoritesMedia()发生异常: {0}", e);
             return null;
         }
     }
 
     /// <summary>
-    /// 获取收藏夹内容明细列表（全部）
+    ///     获取收藏夹内容明细列表（全部）
     /// </summary>
     /// <param name="mediaId">收藏夹ID</param>
     /// <returns></returns>
-    public static List<FavoritesMedia> GetAllFavoritesMedia(long mediaId)
+    public async static Task<List<FavoritesMedia>> GetAllFavoritesMedia(long mediaId)
     {
-        List<FavoritesMedia> result = new List<FavoritesMedia>();
+        var result = new List<FavoritesMedia>();
 
-        int i = 0;
+        var i = 0;
         while (true)
         {
             i++;
-            int ps = 20;
+            var ps = 20;
 
-            var data = GetFavoritesMedia(mediaId, i, ps);
+            var data = await GetFavoritesMedia(mediaId, i, ps);
             if (data == null || data.Count == 0)
             {
                 break;
@@ -66,30 +57,23 @@ public static class FavoritesResource
     }
 
     /// <summary>
-    /// 获取收藏夹全部内容id
+    ///     获取收藏夹全部内容id
     /// </summary>
     /// <param name="mediaId"></param>
     /// <returns></returns>
-    public static List<FavoritesMediaId> GetFavoritesMediaId(long mediaId)
+    public async static Task<List<FavoritesMediaId>?> GetFavoritesMediaId(long mediaId)
     {
-        string url = $"https://api.bilibili.com/x/v3/fav/resource/ids?media_id={mediaId}";
-        string referer = "https://www.bilibili.com";
-        string response = WebClient.RequestWeb(url, referer);
+        var url = $"https://api.bilibili.com/x/v3/fav/resource/ids?media_id={mediaId}";
+        const string referer = "https://www.bilibili.com";
 
         try
         {
-            var media = JsonConvert.DeserializeObject<FavoritesMediaIdOrigin>(response);
-            if (media == null || media.Data == null)
-            {
-                return null;
-            }
-
+            var media = await WebClient.RequestWebAsync<FavoritesMediaIdOrigin>(url, referer);
             return media.Data;
         }
         catch (Exception e)
         {
-            Console.WriteLine("GetFavoritesMediaId()发生异常: {0}", e);
-            LogManager.Error("FavoritesResource", e);
+            Console.Error.WriteLine("GetFavoritesMediaId()发生异常: {0}", e);
             return null;
         }
     }

@@ -1,26 +1,24 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 
-namespace DownKyi.Core.Aria2cNet.Client.Entity
+namespace DownKyi.Core.Aria2cNet.Client.Entity;
+
+public class AriaGetUris
 {
-    [JsonObject]
-    public class AriaGetUris
+    [JsonPropertyName("id")]
+    public required string Id { get; set; }
+
+    [JsonPropertyName("jsonrpc")]
+    public required string Jsonrpc { get; set; }
+
+    [JsonPropertyName("result")]
+    public required List<AriaUri> Result { get; set; }
+
+    [JsonPropertyName("error")]
+    public required AriaError Error { get; set; }
+
+    public override string ToString()
     {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("jsonrpc")]
-        public string Jsonrpc { get; set; }
-
-        [JsonProperty("result")]
-        public List<AriaUri> Result { get; set; }
-
-        [JsonProperty("error")]
-        public AriaError Error { get; set; }
-
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
+        return JsonSerializer.Serialize(this);
     }
 }

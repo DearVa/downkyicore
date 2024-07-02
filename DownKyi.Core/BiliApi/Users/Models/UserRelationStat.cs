@@ -1,19 +1,19 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Users.Models;
 
 // https://api.bilibili.com/x/relation/stat?vmid={mid}
 public class UserRelationStatOrigin : BaseModel
 {
-    [JsonProperty("data")] public UserRelationStat Data { get; set; }
+    [JsonPropertyName("data")] public required UserRelationStat Data { get; set; }
 }
 
 public class UserRelationStat : BaseModel
 {
-    [JsonProperty("mid")] public long Mid { get; set; }
-    [JsonProperty("following")] public long Following { get; set; } // 关注数
-    [JsonProperty("whisper")] public long Whisper { get; set; }
-    [JsonProperty("black")] public long Black { get; set; }
-    [JsonProperty("follower")] public long Follower { get; set; } // 粉丝数
+    [JsonPropertyName("mid")] public long Mid { get; set; }
+    [JsonPropertyName("following")] public long Following { get; set; } // 关注数
+    [JsonPropertyName("whisper")] public long Whisper { get; set; }
+    [JsonPropertyName("black")] public long Black { get; set; }
+    [JsonPropertyName("follower")] public long Follower { get; set; } // 粉丝数
 }

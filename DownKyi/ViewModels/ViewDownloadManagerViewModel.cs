@@ -20,7 +20,7 @@ public class ViewDownloadManagerViewModel : ViewModelBase
 
     private List<TabHeader> _tabHeaders;
 
-    public List<TabHeader> TabHeaders
+    public required List<TabHeader> TabHeaders
     {
         get => _tabHeaders;
         set => SetProperty(ref _tabHeaders, value);

@@ -17,7 +17,7 @@ public class ViewBiliHelperViewModel : ViewModelBase
 
     private string _avid;
 
-    public string Avid
+    public required stringAvid
     {
         get => _avid;
         set => SetProperty(ref _avid, value);
@@ -25,7 +25,7 @@ public class ViewBiliHelperViewModel : ViewModelBase
 
     private string _bvid;
 
-    public string Bvid
+    public required string Bvid
     {
         get => _bvid;
         set => SetProperty(ref _bvid, value);
@@ -33,7 +33,7 @@ public class ViewBiliHelperViewModel : ViewModelBase
 
     private string _danmakuUserId;
 
-    public string DanmakuUserId
+    public required string DanmakuUserId
     {
         get => _danmakuUserId;
         set => SetProperty(ref _danmakuUserId, value);
@@ -41,7 +41,7 @@ public class ViewBiliHelperViewModel : ViewModelBase
 
     private string _userMid;
 
-    public string UserMid
+    public required string UserMid
     {
         get => _userMid;
         set => SetProperty(ref _userMid, value);
@@ -149,9 +149,8 @@ public class ViewBiliHelperViewModel : ViewModelBase
             {
                 UserMid = null;
 
-                Console.PrintLine("FindDanmakuSenderCommand()发生异常: {0}", e);
-                LogManager.Error(Tag, e);
-            }
+                Console.Error.WriteLine("FindDanmakuSenderCommand()发生异常: {0}", e);
+                            }
         });
     }
 

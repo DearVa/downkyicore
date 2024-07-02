@@ -17,7 +17,8 @@ using DownKyi.Services.Download;
 using DownKyi.Utils;
 using DownKyi.ViewModels.Dialogs;
 using DownKyi.ViewModels.PageViewModels;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Regions;
@@ -48,7 +49,7 @@ public class ViewVideoDetailViewModel : ViewModelBase
 
     private string _inputSearchText;
 
-    public string InputSearchText
+    public required stringInputSearchText
     {
         get => _inputSearchText;
         set => SetProperty(ref _inputSearchText, value);
@@ -97,7 +98,7 @@ public class ViewVideoDetailViewModel : ViewModelBase
 
     public ObservableCollection<VideoSection> CaCheVideoSections { get; set; }
 
-    public List<VideoPage> selectedVideoPages { get; set; } = new();
+    public required List<VideoPage> selectedVideoPages { get; set; } = new();
 
     private bool _isSelectAll;
 
@@ -255,9 +256,8 @@ public class ViewVideoDetailViewModel : ViewModelBase
         }
         catch (Exception e)
         {
-            Console.PrintLine("InputCommand()发生异常: {0}", e);
-            LogManager.Error(Tag, e);
-
+            Console.Error.WriteLine("InputCommand()发生异常: {0}", e);
+            
             LoadingVisibility = false;
             ContentVisibility = false;
             NoDataVisibility = true;
@@ -445,9 +445,8 @@ public class ViewVideoDetailViewModel : ViewModelBase
         }
         catch (Exception e)
         {
-            Console.PrintLine("ParseCommand()发生异常: {0}", e);
-            LogManager.Error(Tag, e);
-
+            Console.Error.WriteLine("ParseCommand()发生异常: {0}", e);
+            
             LoadingVisibility = false;
         }
 
@@ -568,9 +567,8 @@ public class ViewVideoDetailViewModel : ViewModelBase
         }
         catch (Exception e)
         {
-            Console.PrintLine("ParseCommand()发生异常: {0}", e);
-            LogManager.Error(Tag, e);
-
+            Console.Error.WriteLine("ParseCommand()发生异常: {0}", e);
+            
             LoadingVisibility = false;
         }
 
@@ -726,7 +724,7 @@ public class ViewVideoDetailViewModel : ViewModelBase
         {
             //这里如果浅拷贝会导致用于查询的CaCheVideoSections数据变化，所以这样处理
             var videoSectionsStr = JsonConvert.SerializeObject(videoSections);
-            var videoSectionsData = JsonConvert.DeserializeObject<List<VideoSection>>(videoSectionsStr);
+            var videoSectionsData = await JsonSerializer.DeserializeAsync<List<VideoSection>>(videoSectionsStr);
             PropertyChangeAsync(() =>
             {
                 VideoSections.AddRange(videoSections);

@@ -1,17 +1,17 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Users.Models;
 
 // https://space.bilibili.com/ajax/settings/getSettings?mid={mid}
 public class SpaceSettingsOrigin : BaseModel
 {
-    [JsonProperty("status")] public bool Status { get; set; }
-    [JsonProperty("data")] public SpaceSettings Data { get; set; }
+    [JsonPropertyName("status")] public bool Status { get; set; }
+    [JsonPropertyName("data")] public required SpaceSettings Data { get; set; }
 }
 
 public class SpaceSettings : BaseModel
 {
     // ...
-    [JsonProperty("toutu")] public SpaceSettingsToutu Toutu { get; set; }
+    [JsonPropertyName("toutu")] public required SpaceSettingsToutu Toutu { get; set; }
 }

@@ -33,7 +33,7 @@ public class ViewNetworkViewModel : ViewModelBase
 
     private string userAgent;
 
-    public string UserAgent
+    public required stringUserAgent
     {
         get => userAgent;
         set => SetProperty(ref userAgent, value);
@@ -65,7 +65,7 @@ public class ViewNetworkViewModel : ViewModelBase
 
     private List<int> maxCurrentDownloads;
 
-    public List<int> MaxCurrentDownloads
+    public required List<int> MaxCurrentDownloads
     {
         get => maxCurrentDownloads;
         set => SetProperty(ref maxCurrentDownloads, value);
@@ -81,7 +81,7 @@ public class ViewNetworkViewModel : ViewModelBase
 
     private List<int> splits;
 
-    public List<int> Splits
+    public required List<int> Splits
     {
         get => splits;
         set => SetProperty(ref splits, value);
@@ -105,7 +105,7 @@ public class ViewNetworkViewModel : ViewModelBase
 
     private string httpProxy;
 
-    public string HttpProxy
+    public required string HttpProxy
     {
         get => httpProxy;
         set => SetProperty(ref httpProxy, value);
@@ -121,7 +121,7 @@ public class ViewNetworkViewModel : ViewModelBase
 
     private string ariaHost;
 
-    public string AriaHost
+    public required string AriaHost
     {
         get => ariaHost;
         set => SetProperty(ref ariaHost, value);
@@ -137,7 +137,7 @@ public class ViewNetworkViewModel : ViewModelBase
 
     private string ariaToken;
 
-    public string AriaToken
+    public required string AriaToken
     {
         get => ariaToken;
         set => SetProperty(ref ariaToken, value);
@@ -145,7 +145,7 @@ public class ViewNetworkViewModel : ViewModelBase
 
     private List<string> ariaLogLevels;
 
-    public List<string> AriaLogLevels
+    public required List<string> AriaLogLevels
     {
         get => ariaLogLevels;
         set => SetProperty(ref ariaLogLevels, value);
@@ -153,7 +153,7 @@ public class ViewNetworkViewModel : ViewModelBase
 
     private string selectedAriaLogLevel;
 
-    public string SelectedAriaLogLevel
+    public required string SelectedAriaLogLevel
     {
         get => selectedAriaLogLevel;
         set => SetProperty(ref selectedAriaLogLevel, value);
@@ -161,7 +161,7 @@ public class ViewNetworkViewModel : ViewModelBase
 
     private List<int> ariaMaxConcurrentDownloads;
 
-    public List<int> AriaMaxConcurrentDownloads
+    public required List<int> AriaMaxConcurrentDownloads
     {
         get => ariaMaxConcurrentDownloads;
         set => SetProperty(ref ariaMaxConcurrentDownloads, value);
@@ -177,7 +177,7 @@ public class ViewNetworkViewModel : ViewModelBase
 
     private List<int> ariaSplits;
 
-    public List<int> AriaSplits
+    public required List<int> AriaSplits
     {
         get => ariaSplits;
         set => SetProperty(ref ariaSplits, value);
@@ -217,7 +217,7 @@ public class ViewNetworkViewModel : ViewModelBase
 
     private string ariaHttpProxy;
 
-    public string AriaHttpProxy
+    public required string AriaHttpProxy
     {
         get => ariaHttpProxy;
         set => SetProperty(ref ariaHttpProxy, value);
@@ -233,7 +233,7 @@ public class ViewNetworkViewModel : ViewModelBase
 
     private List<string> ariaFileAllocations;
 
-    public List<string> AriaFileAllocations
+    public required List<string> AriaFileAllocations
     {
         get => ariaFileAllocations;
         set => SetProperty(ref ariaFileAllocations, value);
@@ -241,7 +241,7 @@ public class ViewNetworkViewModel : ViewModelBase
 
     private string selectedAriaFileAllocation;
 
-    public string SelectedAriaFileAllocation
+    public required string SelectedAriaFileAllocation
     {
         get => selectedAriaFileAllocation;
         set => SetProperty(ref selectedAriaFileAllocation, value);

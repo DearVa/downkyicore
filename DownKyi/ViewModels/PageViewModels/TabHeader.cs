@@ -23,7 +23,7 @@ public class TabHeader : BindableBase
 
     private string title;
 
-    public string Title
+    public required string Title
     {
         get => title;
         set => SetProperty(ref title, value);
@@ -31,7 +31,7 @@ public class TabHeader : BindableBase
 
     private string subTitle;
 
-    public string SubTitle
+    public required string SubTitle
     {
         get => subTitle;
         set => SetProperty(ref subTitle, value);

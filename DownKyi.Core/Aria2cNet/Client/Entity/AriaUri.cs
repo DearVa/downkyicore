@@ -1,16 +1,16 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace DownKyi.Core.Aria2cNet.Client.Entity;
 
-[JsonObject]
 public class AriaUri
 {
-    [JsonProperty("status")] public string Status { get; set; }
+    [JsonPropertyName("status")] public required string Status { get; set; }
 
-    [JsonProperty("uri")] public string Uri { get; set; }
+    [JsonPropertyName("uri")] public required string Uri { get; set; }
 
     public override string ToString()
     {
-        return JsonConvert.SerializeObject(this);
+        return JsonSerializer.Serialize(this);
     }
 }

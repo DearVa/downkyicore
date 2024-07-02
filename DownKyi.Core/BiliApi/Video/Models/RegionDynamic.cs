@@ -1,22 +1,22 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Video.Models;
 
 // https://api.bilibili.com/x/web-interface/dynamic/region
 public class RegionDynamicOrigin : BaseModel
 {
-    //[JsonProperty("code")]
+    //[JsonPropertyName("code")]
     //public int Code { get; set; }
-    //[JsonProperty("message")]
-    //public string Message { get; set; }
-    //[JsonProperty("ttl")]
+    //[JsonPropertyName("message")]
+    //public required string Message { get; set; }
+    //[JsonPropertyName("ttl")]
     //public int Ttl { get; set; }
-    [JsonProperty("data")] public RegionDynamic Data { get; set; }
+    [JsonPropertyName("data")] public required RegionDynamic Data { get; set; }
 }
 
 public class RegionDynamic : BaseModel
 {
-    [JsonProperty("archives")] public List<DynamicVideoView> Archives { get; set; }
+    [JsonPropertyName("archives")] public required List<DynamicVideoView> Archives { get; set; }
     // page
 }

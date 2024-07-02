@@ -4,17 +4,18 @@ using System.Net;
 namespace DownKyi.Core.Downloader;
 
 /// <summary>
-/// 文件合并改变事件
+///     文件合并改变事件
 /// </summary>
 /// <param name="sender"></param>
 /// <param name="e"></param>
 public delegate void FileMergeProgressChangedEventHandler(object sender, int e);
 
 /// <summary>
-/// 多线程下载器
+///     多线程下载器
 /// </summary>
 public class MultiThreadDownloader
 {
+
     #region 属性
 
     private string _url;
@@ -30,7 +31,7 @@ public class MultiThreadDownloader
     #region 公共属性
 
     /// <summary>
-    /// RangeAllowed
+    ///     RangeAllowed
     /// </summary>
     public bool RangeAllowed
     {
@@ -39,26 +40,26 @@ public class MultiThreadDownloader
     }
 
     /// <summary>
-    /// 临时文件夹
+    ///     临时文件夹
     /// </summary>
     public string TempFileDirectory { get; set; }
 
     /// <summary>
-    /// url地址
+    ///     url地址
     /// </summary>
-    public string Url
+    public required string Url
     {
         get => _url;
         set => _url = value;
     }
 
     /// <summary>
-    /// 第几部分
+    ///     第几部分
     /// </summary>
     public int NumberOfParts { get; set; }
 
     /// <summary>
-    /// 已接收字节数
+    ///     已接收字节数
     /// </summary>
     public long TotalBytesReceived
     {
@@ -79,17 +80,17 @@ public class MultiThreadDownloader
     }
 
     /// <summary>
-    /// 总进度
+    ///     总进度
     /// </summary>
     public float TotalProgress { get; private set; }
 
     /// <summary>
-    /// 文件大小
+    ///     文件大小
     /// </summary>
     public long Size { get; private set; }
 
     /// <summary>
-    /// 下载速度
+    ///     下载速度
     /// </summary>
     public float TotalSpeedInBytes
     {
@@ -103,31 +104,31 @@ public class MultiThreadDownloader
     }
 
     /// <summary>
-    /// 下载块
+    ///     下载块
     /// </summary>
     public List<PartialDownloader> PartialDownloaderList { get; }
 
     /// <summary>
-    /// 文件路径
+    ///     文件路径
     /// </summary>
-    public string FilePath { get; set; }
+    public required string FilePath { get; set; }
 
     #endregion 公共属性
 
     #region 变量
 
     /// <summary>
-    /// 总下载进度更新事件
+    ///     总下载进度更新事件
     /// </summary>
     public event EventHandler TotalProgressChanged;
 
     /// <summary>
-    /// 文件合并完成事件
+    ///     文件合并完成事件
     /// </summary>
     public event EventHandler FileMergedComplete;
 
     /// <summary>
-    /// 文件合并事件
+    ///     文件合并事件
     /// </summary>
     public event FileMergeProgressChangedEventHandler FileMergeProgressChanged;
 
@@ -138,7 +139,7 @@ public class MultiThreadDownloader
     #region 下载管理器
 
     /// <summary>
-    /// 多线程下载管理器
+    ///     多线程下载管理器
     /// </summary>
     /// <param name="sourceUrl"></param>
     /// <param name="tempDir"></param>
@@ -156,19 +157,21 @@ public class MultiThreadDownloader
     }
 
     /// <summary>
-    /// 多线程下载管理器
+    ///     多线程下载管理器
     /// </summary>
     /// <param name="sourceUrl"></param>
     /// <param name="savePath"></param>
     /// <param name="numOfParts"></param>
-    public MultiThreadDownloader(string sourceUrl, string savePath, int numOfParts) : this(sourceUrl, null,
-        savePath, numOfParts)
+    public MultiThreadDownloader(string sourceUrl, string savePath, int numOfParts) : this(sourceUrl,
+        null,
+        savePath,
+        numOfParts)
     {
         TempFileDirectory = Path.Combine(Path.GetTempPath(), "DownKyi");
     }
 
     /// <summary>
-    /// 多线程下载管理器
+    ///     多线程下载管理器
     /// </summary>
     /// <param name="sourceUrl"></param>
     /// <param name="numOfParts"></param>
@@ -227,7 +230,7 @@ public class MultiThreadDownloader
 
     private void UpdateProgress()
     {
-        int pr = (int)(TotalBytesReceived * 1d / Size * 100);
+        var pr = (int)(TotalBytesReceived * 1d / Size * 100);
         if (TotalProgress != pr)
         {
             TotalProgress = pr;
@@ -245,7 +248,7 @@ public class MultiThreadDownloader
     private void CreateFirstPartitions()
     {
         Size = GetContentLength(ref _rangeAllowed, ref _url);
-        int maximumPart = (int)(Size / (25 * 1024));
+        var maximumPart = (int)(Size / (25 * 1024));
         maximumPart = maximumPart == 0 ? 1 : maximumPart;
         if (!_rangeAllowed)
         {
@@ -256,7 +259,7 @@ public class MultiThreadDownloader
             NumberOfParts = maximumPart;
         }
 
-        for (int i = 0; i < NumberOfParts; i++)
+        for (var i = 0; i < NumberOfParts; i++)
         {
             var temp = CreateNew(i, NumberOfParts, Size);
             temp.DownloadPartProgressChanged += temp_DownloadPartProgressChanged;
@@ -280,18 +283,18 @@ public class MultiThreadDownloader
         using (var fs = File.OpenWrite(FilePath))
         {
             long totalBytesWrite = 0;
-            int mergeProgress = 0;
+            var mergeProgress = 0;
             foreach (var item in mergeOrderedList)
             {
                 using (var pdi = File.OpenRead(item.FullPath))
                 {
-                    byte[] buffer = new byte[4096];
+                    var buffer = new byte[4096];
                     int read;
                     while ((read = pdi.Read(buffer, 0, buffer.Length)) > 0)
                     {
                         fs.Write(buffer, 0, read);
                         totalBytesWrite += read;
-                        int temp = (int)(totalBytesWrite * 1d / Size * 100);
+                        var temp = (int)(totalBytesWrite * 1d / Size * 100);
                         if (temp != mergeProgress && FileMergeProgressChanged != null)
                         {
                             mergeProgress = temp;
@@ -328,7 +331,7 @@ public class MultiThreadDownloader
     }
 
     /// <summary>
-    /// 暂停或继续
+    ///     暂停或继续
     /// </summary>
     /// <param name="list"></param>
     /// <param name="wait"></param>
@@ -348,7 +351,7 @@ public class MultiThreadDownloader
     }
 
     /// <summary>
-    /// 配置请求头
+    ///     配置请求头
     /// </summary>
     /// <param name="config"></param>
     public void Configure(Action<HttpWebRequest> config)
@@ -357,7 +360,7 @@ public class MultiThreadDownloader
     }
 
     /// <summary>
-    /// 获取内容长度
+    ///     获取内容长度
     /// </summary>
     /// <param name="rangeAllowed"></param>
     /// <param name="redirectedUrl"></param>
@@ -376,7 +379,7 @@ public class MultiThreadDownloader
             rangeAllowed = resp.Headers.AllKeys.Select((v, i) => new
             {
                 HeaderName = v,
-                HeaderValue = resp.Headers[i]
+                HeaderValue = resp.Headers[i],
             }).Any(k => k.HeaderName.ToLower().Contains("range") && k.HeaderValue.ToLower().Contains("byte"));
             _request.Abort();
             return ctl;
@@ -388,7 +391,7 @@ public class MultiThreadDownloader
     #region 公共方法
 
     /// <summary>
-    /// 暂停下载
+    ///     暂停下载
     /// </summary>
     public void Pause()
     {
@@ -404,21 +407,21 @@ public class MultiThreadDownloader
     }
 
     /// <summary>
-    /// 开始下载
+    ///     开始下载
     /// </summary>
     public void Start()
     {
-        Task th = new Task(CreateFirstPartitions);
+        var th = new Task(CreateFirstPartitions);
         th.Start();
     }
 
     /// <summary>
-    /// 唤醒下载
+    ///     唤醒下载
     /// </summary>
     public void Resume()
     {
-        int count = PartialDownloaderList.Count;
-        for (int i = 0; i < count; i++)
+        var count = PartialDownloaderList.Count;
+        for (var i = 0; i < count; i++)
         {
             if (PartialDownloaderList[i].Stopped)
             {
@@ -429,7 +432,11 @@ public class MultiThreadDownloader
                     continue;
                 }
 
-                var temp = new PartialDownloader(_url, TempFileDirectory, Guid.NewGuid().ToString(), from, to,
+                var temp = new PartialDownloader(_url,
+                    TempFileDirectory,
+                    Guid.NewGuid().ToString(),
+                    from,
+                    to,
                     _rangeAllowed);
                 temp.DownloadPartProgressChanged += temp_DownloadPartProgressChanged;
                 temp.DownloadPartCompleted += temp_DownloadPartCompleted;
@@ -445,4 +452,5 @@ public class MultiThreadDownloader
     }
 
     #endregion 公共方法
+
 }

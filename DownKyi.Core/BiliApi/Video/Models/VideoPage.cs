@@ -1,17 +1,17 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Video.Models;
 
 public class VideoPage : BaseModel
 {
-    [JsonProperty("cid")] public long Cid { get; set; }
-    [JsonProperty("page")] public int Page { get; set; }
-    [JsonProperty("from")] public string From { get; set; }
-    [JsonProperty("part")] public string Part { get; set; }
-    [JsonProperty("duration")] public long Duration { get; set; }
-    [JsonProperty("vid")] public string Vid { get; set; }
-    [JsonProperty("weblink")] public string Weblink { get; set; }
-    [JsonProperty("dimension")] public Dimension Dimension { get; set; }
-    [JsonProperty("first_frame")] public string FirstFrame { get; set; }
+    [JsonPropertyName("cid")] public long Cid { get; set; }
+    [JsonPropertyName("page")] public int Page { get; set; }
+    [JsonPropertyName("from")] public required string From { get; set; }
+    [JsonPropertyName("part")] public required string Part { get; set; }
+    [JsonPropertyName("duration")] public long Duration { get; set; }
+    [JsonPropertyName("vid")] public required string Vid { get; set; }
+    [JsonPropertyName("weblink")] public required string Weblink { get; set; }
+    [JsonPropertyName("dimension")] public required Dimension Dimension { get; set; }
+    [JsonPropertyName("first_frame")] public string? FirstFrame { get; set; }
 }

@@ -16,7 +16,7 @@ public class TabRightBanner : BindableBase
 
     private string labelColor;
 
-    public string LabelColor
+    public required string LabelColor
     {
         get => labelColor;
         set => SetProperty(ref labelColor, value);
@@ -24,7 +24,7 @@ public class TabRightBanner : BindableBase
 
     private string countColor;
 
-    public string CountColor
+    public required string CountColor
     {
         get => countColor;
         set => SetProperty(ref countColor, value);
@@ -32,7 +32,7 @@ public class TabRightBanner : BindableBase
 
     private string label;
 
-    public string Label
+    public required string Label
     {
         get => label;
         set => SetProperty(ref label, value);
@@ -40,7 +40,7 @@ public class TabRightBanner : BindableBase
 
     private string count;
 
-    public string Count
+    public required string Count
     {
         get => count;
         set => SetProperty(ref count, value);

@@ -4,5 +4,5 @@ public enum RepeatDownloadStrategy
 {
     Ask,
     ReDownload,
-    JumpOver
-};
+    JumpOver,
+}

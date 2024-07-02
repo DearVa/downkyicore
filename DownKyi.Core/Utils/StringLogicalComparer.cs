@@ -3,7 +3,7 @@
 public class StringLogicalComparer<T> : IComparer<T>
 {
     /// <summary>
-    /// 比较两个字符串，如果含用数字，则数字按数字的大小来比较。
+    ///     比较两个字符串，如果含用数字，则数字按数字的大小来比较。
     /// </summary>
     /// <param name="x"></param>
     /// <param name="y"></param>

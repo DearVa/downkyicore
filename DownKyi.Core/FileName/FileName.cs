@@ -5,23 +5,23 @@ namespace DownKyi.Core.FileName;
 public class FileName
 {
     private readonly List<FileNamePart> nameParts;
-    private string order = "ORDER";
-    private string section = "SECTION";
-    private string mainTitle = "MAIN_TITLE";
-    private string pageTitle = "PAGE_TITLE";
-    private string videoZone = "VIDEO_ZONE";
     private string audioQuality = "AUDIO_QUALITY";
-    private string videoQuality = "VIDEO_QUALITY";
-    private string videoCodec = "VIDEO_CODEC";
-
-    private string videoPublishTime = "VIDEO_PUBLISH_TIME";
 
     private long avid = -1;
     private string bvid = "BVID";
     private long cid = -1;
+    private string mainTitle = "MAIN_TITLE";
+    private string order = "ORDER";
+    private string pageTitle = "PAGE_TITLE";
+    private string section = "SECTION";
 
     private long upMid = -1;
     private string upName = "UP_NAME";
+    private string videoCodec = "VIDEO_CODEC";
+
+    private string videoPublishTime = "VIDEO_PUBLISH_TIME";
+    private string videoQuality = "VIDEO_QUALITY";
+    private string videoZone = "VIDEO_ZONE";
 
     private FileName(List<FileNamePart> nameParts)
     {
@@ -41,7 +41,7 @@ public class FileName
 
     public FileName SetOrder(int order, int count)
     {
-        int length = Math.Abs(count).ToString().Length;
+        var length = Math.Abs(count).ToString().Length;
         this.order = order.ToString("D" + length);
 
         return this;
@@ -127,9 +127,9 @@ public class FileName
 
     public string RelativePath()
     {
-        string path = string.Empty;
+        var path = string.Empty;
 
-        foreach (FileNamePart part in nameParts)
+        foreach (var part in nameParts)
         {
             switch (part)
             {
@@ -177,7 +177,7 @@ public class FileName
                     break;
             }
 
-            if (((int)part) >= 100)
+            if ((int)part >= 100)
             {
                 path += HyphenSeparated.Hyphen[(int)part];
             }

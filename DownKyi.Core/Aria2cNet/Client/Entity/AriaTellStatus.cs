@@ -1,128 +1,123 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 
-namespace DownKyi.Core.Aria2cNet.Client.Entity
+namespace DownKyi.Core.Aria2cNet.Client.Entity;
+
+public class AriaTellStatus
 {
-    [JsonObject]
-    public class AriaTellStatus
+    [JsonPropertyName("id")]
+    public required string Id { get; set; }
+
+    [JsonPropertyName("jsonrpc")]
+    public required string Jsonrpc { get; set; }
+
+    [JsonPropertyName("result")]
+    public required AriaTellStatusResult Result { get; set; }
+
+    [JsonPropertyName("error")]
+    public AriaError? Error { get; set; }
+
+    public override string ToString()
     {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("jsonrpc")]
-        public string Jsonrpc { get; set; }
-
-        [JsonProperty("result")]
-        public AriaTellStatusResult Result { get; set; }
-
-        [JsonProperty("error")]
-        public AriaError Error { get; set; }
-
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
+        return JsonSerializer.Serialize(this);
     }
+}
 
-    [JsonObject]
-    public class AriaTellStatusList
+public class AriaTellStatusList
+{
+    [JsonPropertyName("id")]
+    public required string Id { get; set; }
+
+    [JsonPropertyName("jsonrpc")]
+    public required string Jsonrpc { get; set; }
+
+    [JsonPropertyName("result")]
+    public List<AriaTellStatusResult>? Result { get; set; }
+
+    [JsonPropertyName("error")]
+    public AriaError? Error { get; set; }
+
+    public override string ToString()
     {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("jsonrpc")]
-        public string Jsonrpc { get; set; }
-
-        [JsonProperty("result")]
-        public List<AriaTellStatusResult> Result { get; set; }
-
-        [JsonProperty("error")]
-        public AriaError Error { get; set; }
-
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
+        return JsonSerializer.Serialize(this);
     }
+}
 
-    [JsonObject]
-    public class AriaTellStatusResult
+public class AriaTellStatusResult
+{
+    [JsonPropertyName("bitfield")]
+    public string? Bitfield { get; set; }
+
+    [JsonPropertyName("completedLength")]
+    public required string CompletedLength { get; set; }
+
+    [JsonPropertyName("connections")]
+    public string? Connections { get; set; }
+
+    [JsonPropertyName("dir")]
+    public string? Dir { get; set; }
+
+    [JsonPropertyName("downloadSpeed")]
+    public required string DownloadSpeed { get; set; }
+
+    [JsonPropertyName("errorCode")]
+    public string? ErrorCode { get; set; }
+
+    [JsonPropertyName("errorMessage")]
+    public string? ErrorMessage { get; set; }
+
+    [JsonPropertyName("files")]
+    public List<AriaTellStatusResultFile>? Files { get; set; }
+
+    [JsonPropertyName("gid")]
+    public string? Gid { get; set; }
+
+    [JsonPropertyName("numPieces")]
+    public required string NumPieces { get; set; }
+
+    [JsonPropertyName("pieceLength")]
+    public required string PieceLength { get; set; }
+
+    [JsonPropertyName("status")]
+    public string? Status { get; set; }
+
+    [JsonPropertyName("totalLength")]
+    public required string TotalLength { get; set; }
+
+    [JsonPropertyName("uploadLength")]
+    public string? UploadLength { get; set; }
+
+    [JsonPropertyName("uploadSpeed")]
+    public string? UploadSpeed { get; set; }
+
+    public override string ToString()
     {
-        [JsonProperty("bitfield")]
-        public string Bitfield { get; set; }
-
-        [JsonProperty("completedLength")]
-        public string CompletedLength { get; set; }
-
-        [JsonProperty("connections")]
-        public string Connections { get; set; }
-
-        [JsonProperty("dir")]
-        public string Dir { get; set; }
-
-        [JsonProperty("downloadSpeed")]
-        public string DownloadSpeed { get; set; }
-
-        [JsonProperty("errorCode")]
-        public string ErrorCode { get; set; }
-
-        [JsonProperty("errorMessage")]
-        public string ErrorMessage { get; set; }
-
-        [JsonProperty("files")]
-        public List<AriaTellStatusResultFile> Files { get; set; }
-
-        [JsonProperty("gid")]
-        public string Gid { get; set; }
-
-        [JsonProperty("numPieces")]
-        public string NumPieces { get; set; }
-
-        [JsonProperty("pieceLength")]
-        public string PieceLength { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("totalLength")]
-        public string TotalLength { get; set; }
-
-        [JsonProperty("uploadLength")]
-        public string UploadLength { get; set; }
-
-        [JsonProperty("uploadSpeed")]
-        public string UploadSpeed { get; set; }
-
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
+        return JsonSerializer.Serialize(this);
     }
+}
 
-    [JsonObject]
-    public class AriaTellStatusResultFile
+public class AriaTellStatusResultFile
+{
+    [JsonPropertyName("completedLength")]
+    public required string CompletedLength { get; set; }
+
+    [JsonPropertyName("index")]
+    public required string Index { get; set; }
+
+    [JsonPropertyName("length")]
+    public required string Length { get; set; }
+
+    [JsonPropertyName("path")]
+    public required string Path { get; set; }
+
+    [JsonPropertyName("selected")]
+    public required string Selected { get; set; }
+
+    [JsonPropertyName("uris")]
+    public required List<AriaUri> Uris { get; set; }
+
+    public override string ToString()
     {
-        [JsonProperty("completedLength")]
-        public string CompletedLength { get; set; }
-
-        [JsonProperty("index")]
-        public string Index { get; set; }
-
-        [JsonProperty("length")]
-        public string Length { get; set; }
-
-        [JsonProperty("path")]
-        public string Path { get; set; }
-
-        [JsonProperty("selected")]
-        public string Selected { get; set; }
-
-        [JsonProperty("uris")]
-        public List<AriaUri> Uris { get; set; }
-
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
+        return JsonSerializer.Serialize(this);
     }
 }

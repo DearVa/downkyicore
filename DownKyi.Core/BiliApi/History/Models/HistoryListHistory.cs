@@ -1,25 +1,31 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
-namespace DownKyi.Core.BiliApi.History.Models
+namespace DownKyi.Core.BiliApi.History.Models;
+
+public class HistoryListHistory : BaseModel
 {
-    public class HistoryListHistory : BaseModel
-    {
-        [JsonProperty("oid")]
-        public long Oid { get; set; }
-        [JsonProperty("epid")]
-        public long Epid { get; set; }
-        [JsonProperty("bvid")]
-        public string Bvid { get; set; }
-        [JsonProperty("page")]
-        public int Page { get; set; }
-        [JsonProperty("cid")]
-        public long Cid { get; set; }
-        [JsonProperty("part")]
-        public string Part { get; set; }
-        [JsonProperty("business")]
-        public string Business { get; set; }
-        [JsonProperty("dt")]
-        public int Dt { get; set; }
-    }
+    [JsonPropertyName("oid")]
+    public long Oid { get; set; }
+
+    [JsonPropertyName("epid")]
+    public long Epid { get; set; }
+
+    [JsonPropertyName("bvid")]
+    public required string Bvid { get; set; }
+
+    [JsonPropertyName("page")]
+    public int Page { get; set; }
+
+    [JsonPropertyName("cid")]
+    public long Cid { get; set; }
+
+    [JsonPropertyName("part")]
+    public required string Part { get; set; }
+
+    [JsonPropertyName("business")]
+    public required string Business { get; set; }
+
+    [JsonPropertyName("dt")]
+    public int Dt { get; set; }
 }

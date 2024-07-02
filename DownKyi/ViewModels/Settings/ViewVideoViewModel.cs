@@ -26,7 +26,7 @@ public class ViewVideoViewModel : ViewModelBase
 
     private List<Quality> videoCodecs;
 
-    public List<Quality> VideoCodecs
+    public required List<Quality> VideoCodecs
     {
         get => videoCodecs;
         set => SetProperty(ref videoCodecs, value);
@@ -42,7 +42,7 @@ public class ViewVideoViewModel : ViewModelBase
 
     private List<Quality> videoQualityList;
 
-    public List<Quality> VideoQualityList
+    public required List<Quality> VideoQualityList
     {
         get => videoQualityList;
         set => SetProperty(ref videoQualityList, value);
@@ -58,7 +58,7 @@ public class ViewVideoViewModel : ViewModelBase
 
     private List<Quality> _audioQualityList;
 
-    public List<Quality> AudioQualityList
+    public required List<Quality> AudioQualityList
     {
         get => _audioQualityList;
         set => SetProperty(ref _audioQualityList, value);
@@ -74,7 +74,7 @@ public class ViewVideoViewModel : ViewModelBase
 
     private List<VideoParseType> _videoParseTypeList;
 
-    public List<VideoParseType> VideoParseTypeList
+    public required List<VideoParseType> VideoParseTypeList
     {
         get => _videoParseTypeList;
         set => SetProperty(ref _videoParseTypeList, value);
@@ -114,7 +114,7 @@ public class ViewVideoViewModel : ViewModelBase
 
     private string _saveVideoDirectory;
 
-    public string SaveVideoDirectory
+    public required stringSaveVideoDirectory
     {
         get => _saveVideoDirectory;
         set => SetProperty(ref _saveVideoDirectory, value);
@@ -194,7 +194,7 @@ public class ViewVideoViewModel : ViewModelBase
 
     private List<string> _fileNamePartTimeFormatList;
 
-    public List<string> FileNamePartTimeFormatList
+    public required List<string> FileNamePartTimeFormatList
     {
         get => _fileNamePartTimeFormatList;
         set => SetProperty(ref _fileNamePartTimeFormatList, value);
@@ -202,7 +202,7 @@ public class ViewVideoViewModel : ViewModelBase
 
     private string _selectedFileNamePartTimeFormat;
 
-    public string SelectedFileNamePartTimeFormat
+    public required string SelectedFileNamePartTimeFormat
     {
         get => _selectedFileNamePartTimeFormat;
         set => SetProperty(ref _selectedFileNamePartTimeFormat, value);
@@ -210,7 +210,7 @@ public class ViewVideoViewModel : ViewModelBase
 
     private List<OrderFormatDisplay> _orderFormatList;
 
-    public List<OrderFormatDisplay> OrderFormatList
+    public required List<OrderFormatDisplay> OrderFormatList
     {
         get => _orderFormatList;
         set => SetProperty(ref _orderFormatList, value);

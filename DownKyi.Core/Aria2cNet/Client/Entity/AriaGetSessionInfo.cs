@@ -1,37 +1,35 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 
-namespace DownKyi.Core.Aria2cNet.Client.Entity
+namespace DownKyi.Core.Aria2cNet.Client.Entity;
+
+public class AriaGetSessionInfo
 {
-    [JsonObject]
-    public class AriaGetSessionInfo
+    [JsonPropertyName("id")]
+    public required string Id { get; set; }
+
+    [JsonPropertyName("jsonrpc")]
+    public required string Jsonrpc { get; set; }
+
+    [JsonPropertyName("result")]
+    public required AriaGetSessionInfoResult Result { get; set; }
+
+    [JsonPropertyName("error")]
+    public required AriaError Error { get; set; }
+
+    public override string ToString()
     {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("jsonrpc")]
-        public string Jsonrpc { get; set; }
-
-        [JsonProperty("result")]
-        public AriaGetSessionInfoResult Result { get; set; }
-
-        [JsonProperty("error")]
-        public AriaError Error { get; set; }
-
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
+        return JsonSerializer.Serialize(this);
     }
+}
 
-    [JsonObject]
-    public class AriaGetSessionInfoResult
+public class AriaGetSessionInfoResult
+{
+    [JsonPropertyName("sessionId")]
+    public required string SessionId { get; set; }
+
+    public override string ToString()
     {
-        [JsonProperty("sessionId")]
-        public string SessionId { get; set; }
-
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
+        return JsonSerializer.Serialize(this);
     }
 }

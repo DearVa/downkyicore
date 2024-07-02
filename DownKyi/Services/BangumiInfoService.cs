@@ -50,7 +50,7 @@ public class BangumiInfoService : IInfoService
     /// 获取视频剧集
     /// </summary>
     /// <returns></returns>
-    public List<VideoPage> GetVideoPages()
+    public required List<VideoPage> GetVideoPages()
     {
         var pages = new List<VideoPage>();
         if (_bangumiSeason == null)

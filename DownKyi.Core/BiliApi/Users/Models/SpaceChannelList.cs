@@ -1,17 +1,17 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Users.Models;
 
 public class SpaceChannelList : BaseModel
 {
-    [JsonProperty("cid")] public long Cid { get; set; }
-    [JsonProperty("mid")] public long Mid { get; set; }
-    [JsonProperty("name")] public string Name { get; set; }
-    [JsonProperty("intro")] public string Intro { get; set; }
-    [JsonProperty("mtime")] public long Mtime { get; set; }
-    [JsonProperty("count")] public int Count { get; set; }
+    [JsonPropertyName("cid")] public long Cid { get; set; }
+    [JsonPropertyName("mid")] public long Mid { get; set; }
+    [JsonPropertyName("name")] public required string Name { get; set; }
+    [JsonPropertyName("intro")] public required string Intro { get; set; }
+    [JsonPropertyName("mtime")] public long Mtime { get; set; }
+    [JsonPropertyName("count")] public int Count { get; set; }
 
-    [JsonProperty("cover")] public string Cover { get; set; }
+    [JsonPropertyName("cover")] public required string Cover { get; set; }
     // is_live_playback
 }

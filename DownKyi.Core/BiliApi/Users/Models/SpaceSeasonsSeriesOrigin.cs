@@ -1,28 +1,28 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Users.Models;
 
 // https://api.bilibili.com/x/space/channel/video?mid={mid}&page_num={pageNum}&page_size={pageSize}
 public class SpaceSeasonsSeriesOrigin : BaseModel
 {
-    //[JsonProperty("code")]
+    //[JsonPropertyName("code")]
     //public int Code { get; set; }
-    //[JsonProperty("message")]
-    //public string Message { get; set; }
-    //[JsonProperty("ttl")]
+    //[JsonPropertyName("message")]
+    //public required string Message { get; set; }
+    //[JsonPropertyName("ttl")]
     //public int Ttl { get; set; }
-    [JsonProperty("data")] public SpaceSeasonsSeriesData Data { get; set; }
+    [JsonPropertyName("data")] public required SpaceSeasonsSeriesData Data { get; set; }
 }
 
 public class SpaceSeasonsSeriesData : BaseModel
 {
-    [JsonProperty("items_lists")] public SpaceSeasonsSeries ItemsLists { get; set; }
+    [JsonPropertyName("items_lists")] public required SpaceSeasonsSeries ItemsLists { get; set; }
 }
 
 public class SpaceSeasonsSeries : BaseModel
 {
-    [JsonProperty("page")] public SpaceSeasonsSeriesPage Page { get; set; }
-    [JsonProperty("seasons_list")] public List<SpaceSeasons> SeasonsList { get; set; }
-    [JsonProperty("series_list")] public List<SpaceSeries> SeriesList { get; set; }
+    [JsonPropertyName("page")] public required SpaceSeasonsSeriesPage Page { get; set; }
+    [JsonPropertyName("seasons_list")] public required List<SpaceSeasons> SeasonsList { get; set; }
+    [JsonPropertyName("series_list")] public required List<SpaceSeries> SeriesList { get; set; }
 }

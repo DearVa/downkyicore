@@ -9,7 +9,7 @@ public class VideoSection : BindableBase
 
     private string title;
 
-    public string Title
+    public required string Title
     {
         get => title;
         set => SetProperty(ref title, value);
@@ -25,7 +25,7 @@ public class VideoSection : BindableBase
 
     private List<VideoPage> videoPages;
 
-    public List<VideoPage> VideoPages
+    public required List<VideoPage> VideoPages
     {
         get => videoPages;
         set => SetProperty(ref videoPages, value);

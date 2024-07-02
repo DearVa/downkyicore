@@ -59,7 +59,7 @@ public class ViewIndexViewModel : ViewModelBase
 
     private string _inputText;
 
-    public string InputText
+    public required stringInputText
     {
         get => _inputText;
         set => SetProperty(ref _inputText, value);
@@ -307,9 +307,8 @@ public class ViewIndexViewModel : ViewModelBase
         }
         catch (Exception e)
         {
-            Console.PrintLine("UpdateUserInfo()发生异常: {0}", e);
-            LogManager.Error(Tag, e);
-        }
+            Console.Error.WriteLine("UpdateUserInfo()发生异常: {0}", e);
+                    }
     }
 
     public override void OnNavigatedTo(NavigationContext navigationContext)

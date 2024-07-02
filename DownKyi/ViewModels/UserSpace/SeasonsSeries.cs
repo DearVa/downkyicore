@@ -26,7 +26,7 @@ public class SeasonsSeries : BindableBase
 
     private string name;
 
-    public string Name
+    public required string Name
     {
         get => name;
         set => SetProperty(ref name, value);
@@ -42,7 +42,7 @@ public class SeasonsSeries : BindableBase
 
     private string ctime;
 
-    public string Ctime
+    public required string Ctime
     {
         get => ctime;
         set => SetProperty(ref ctime, value);

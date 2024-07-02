@@ -68,7 +68,7 @@ namespace DownKyi.ViewModels.DownloadManager
         public PlayUrl PlayUrl { get; set; }
 
         // 正在下载内容（音频、视频、弹幕、字幕、封面）
-        public string DownloadContent
+        public required stringDownloadContent
         {
             get => Downloading.DownloadContent;
             set
@@ -79,7 +79,7 @@ namespace DownKyi.ViewModels.DownloadManager
         }
 
         // 下载状态显示
-        public string DownloadStatusTitle
+        public required string DownloadStatusTitle
         {
             get => Downloading.DownloadStatusTitle;
             set
@@ -101,7 +101,7 @@ namespace DownKyi.ViewModels.DownloadManager
         }
 
         //  已下载大小/文件大小
-        public string DownloadingFileSize
+        public required string DownloadingFileSize
         {
             get => Downloading.DownloadingFileSize;
             set
@@ -112,7 +112,7 @@ namespace DownKyi.ViewModels.DownloadManager
         }
 
         //  下载速度
-        public string SpeedDisplay
+        public required string SpeedDisplay
         {
             get => Downloading.SpeedDisplay;
             set
@@ -124,7 +124,7 @@ namespace DownKyi.ViewModels.DownloadManager
 
         // 操作提示
         private string operationTip;
-        public string OperationTip
+        public required string OperationTip
         {
             get => operationTip;
             set => SetProperty(ref operationTip, value);

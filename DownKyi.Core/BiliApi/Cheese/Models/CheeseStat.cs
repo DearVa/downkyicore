@@ -1,10 +1,10 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Cheese.Models;
 
 public class CheeseStat : BaseModel
 {
-    [JsonProperty("play")] public long Play { get; set; }
-    [JsonProperty("play_desc")] public string PlayDesc { get; set; }
+    [JsonPropertyName("play")] public long Play { get; set; }
+    [JsonPropertyName("play_desc")] public required string PlayDesc { get; set; }
 }

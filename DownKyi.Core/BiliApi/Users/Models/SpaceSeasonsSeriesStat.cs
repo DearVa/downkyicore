@@ -1,9 +1,9 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Users.Models;
 
 public class SpaceSeasonsSeriesStat : BaseModel
 {
-    [JsonProperty("view")] public long View { get; set; }
+    [JsonPropertyName("view")] public long View { get; set; }
 }

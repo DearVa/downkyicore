@@ -1,11 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace DownKyi.Core.BiliApi.Models.Json;
 
 public class Subtitle : BaseModel
 {
-    [JsonProperty("from")] public float From { get; set; }
-    [JsonProperty("to")] public float To { get; set; }
-    [JsonProperty("location")] public int Location { get; set; }
-    [JsonProperty("content")] public string Content { get; set; }
+    [JsonPropertyName("from")] public float From { get; set; }
+    [JsonPropertyName("to")] public float To { get; set; }
+    [JsonPropertyName("location")] public int Location { get; set; }
+    [JsonPropertyName("content")] public required string Content { get; set; }
 }

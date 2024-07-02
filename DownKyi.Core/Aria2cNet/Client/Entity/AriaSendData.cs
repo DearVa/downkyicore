@@ -1,53 +1,50 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 
-namespace DownKyi.Core.Aria2cNet.Client.Entity
+namespace DownKyi.Core.Aria2cNet.Client.Entity;
+
+public class AriaSendData
 {
-    [JsonObject]
-    public class AriaSendData
+    [JsonPropertyName("id")]
+    public required string Id { get; set; }
+
+    [JsonPropertyName("jsonrpc")]
+    public required string Jsonrpc { get; set; }
+
+    [JsonPropertyName("method")]
+    public required string Method { get; set; }
+
+    [JsonPropertyName("params")]
+    public List<object> Params { get; set; } = [];
+
+    public override string ToString()
     {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("jsonrpc")]
-        public string Jsonrpc { get; set; }
-
-        [JsonProperty("method")]
-        public string Method { get; set; }
-
-        [JsonProperty("params")]
-        public List<object> Params { get; set; }
-
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
+        return JsonSerializer.Serialize(this);
     }
+}
 
-    [JsonObject]
-    public class AriaSendOption
+public class AriaSendOption
+{
+    [JsonPropertyName("all-proxy")]
+    public string? HttpProxy { get; set; }
+
+    [JsonPropertyName("out")]
+    public required string Out { get; set; }
+
+    [JsonPropertyName("dir")]
+    public required string Dir { get; set; }
+
+    //[JsonPropertyName("header")]
+    //public required string Header { get; set; }
+
+    //[JsonPropertyName("use-head")]
+    //public required string UseHead { get; set; }
+
+    [JsonPropertyName("user-agent")]
+    public required string UserAgent { get; set; }
+
+    public override string ToString()
     {
-        [JsonProperty("all-proxy")]
-        public string HttpProxy { get; set; }
-
-        [JsonProperty("out")]
-        public string Out { get; set; }
-
-        [JsonProperty("dir")]
-        public string Dir { get; set; }
-
-        //[JsonProperty("header")]
-        //public string Header { get; set; }
-
-        //[JsonProperty("use-head")]
-        //public string UseHead { get; set; }
-
-        [JsonProperty("user-agent")]
-        public string UserAgent { get; set; }
-
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
+        return JsonSerializer.Serialize(this);
     }
 }

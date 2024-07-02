@@ -1,58 +1,58 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Video.Models;
 
 // https://api.bilibili.com/x/web-interface/view
 public class VideoViewOrigin : BaseModel
 {
-    //[JsonProperty("code")]
+    //[JsonPropertyName("code")]
     //public int Code { get; set; }
-    //[JsonProperty("message")]
-    //public string Message { get; set; }
-    //[JsonProperty("ttl")]
+    //[JsonPropertyName("message")]
+    //public required string Message { get; set; }
+    //[JsonPropertyName("ttl")]
     //public int Ttl { get; set; }
-    [JsonProperty("data")] public VideoView Data { get; set; }
+    [JsonPropertyName("data")] public required VideoView Data { get; set; }
 }
 
 public class VideoView : BaseModel
 {
-    [JsonProperty("bvid")] public string Bvid { get; set; }
-    [JsonProperty("aid")] public long Aid { get; set; }
-    [JsonProperty("videos")] public int Videos { get; set; }
-    [JsonProperty("tid")] public int Tid { get; set; }
-    [JsonProperty("tname")] public string Tname { get; set; }
-    [JsonProperty("copyright")] public int Copyright { get; set; }
-    [JsonProperty("pic")] public string Pic { get; set; }
-    [JsonProperty("title")] public string Title { get; set; }
-    [JsonProperty("pubdate")] public long Pubdate { get; set; }
-    [JsonProperty("ctime")] public long Ctime { get; set; }
-    [JsonProperty("desc")] public string Desc { get; set; }
-    [JsonProperty("state")] public int State { get; set; }
-    [JsonProperty("duration")] public long Duration { get; set; }
-    [JsonProperty("redirect_url")] public string RedirectUrl { get; set; }
+    [JsonPropertyName("bvid")] public required string Bvid { get; set; }
+    [JsonPropertyName("aid")] public long Aid { get; set; }
+    [JsonPropertyName("videos")] public int Videos { get; set; }
+    [JsonPropertyName("tid")] public int Tid { get; set; }
+    [JsonPropertyName("tname")] public required string Tname { get; set; }
+    [JsonPropertyName("copyright")] public int Copyright { get; set; }
+    [JsonPropertyName("pic")] public required string Pic { get; set; }
+    [JsonPropertyName("title")] public required string Title { get; set; }
+    [JsonPropertyName("pubdate")] public long Pubdate { get; set; }
+    [JsonPropertyName("ctime")] public long Ctime { get; set; }
+    [JsonPropertyName("desc")] public required string Desc { get; set; }
+    [JsonPropertyName("state")] public int State { get; set; }
+    [JsonPropertyName("duration")] public long Duration { get; set; }
+    [JsonPropertyName("redirect_url")] public string? RedirectUrl { get; set; }
 
-    [JsonProperty("mission_id")] public long MissionId { get; set; }
+    [JsonPropertyName("mission_id")] public long MissionId { get; set; }
 
-    //[JsonProperty("rights")]
+    //[JsonPropertyName("rights")]
     //public VideoRights Rights { get; set; }
-    [JsonProperty("owner")] public VideoOwner Owner { get; set; }
-    [JsonProperty("stat")] public VideoStat Stat { get; set; }
-    [JsonProperty("dynamic")] public string Dynamic { get; set; }
-    [JsonProperty("cid")] public long Cid { get; set; }
-    [JsonProperty("dimension")] public Dimension Dimension { get; set; }
-    [JsonProperty("season_id")] public long SeasonId { get; set; }
+    [JsonPropertyName("owner")] public required VideoOwner Owner { get; set; }
+    [JsonPropertyName("stat")] public required VideoStat Stat { get; set; }
+    [JsonPropertyName("dynamic")] public required string Dynamic { get; set; }
+    [JsonPropertyName("cid")] public long Cid { get; set; }
+    [JsonPropertyName("dimension")] public required Dimension Dimension { get; set; }
+    [JsonPropertyName("season_id")] public long SeasonId { get; set; }
 
-    [JsonProperty("festival_jump_url")] public string FestivalJumpUrl { get; set; }
+    [JsonPropertyName("festival_jump_url")] public string? FestivalJumpUrl { get; set; }
 
-    //[JsonProperty("no_cache")]
+    //[JsonPropertyName("no_cache")]
     //public bool no_cache { get; set; }
-    [JsonProperty("pages")] public List<VideoPage> Pages { get; set; }
-    [JsonProperty("subtitle")] public VideoSubtitle Subtitle { get; set; }
+    [JsonPropertyName("pages")] public required List<VideoPage> Pages { get; set; }
+    [JsonPropertyName("subtitle")] public required VideoSubtitle Subtitle { get; set; }
 
-    [JsonProperty("ugc_season")] public UgcSeason UgcSeason { get; set; }
-    //[JsonProperty("staff")]
-    //public List<Staff> staff { get; set; }
-    //[JsonProperty("user_garb")]
+    [JsonPropertyName("ugc_season")] public required UgcSeason UgcSeason { get; set; }
+    //[JsonPropertyName("staff")]
+    //public required List<Staff> staff { get; set; }
+    //[JsonPropertyName("user_garb")]
     //public user_garb user_garb { get; set; }
 }

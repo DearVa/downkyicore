@@ -63,7 +63,7 @@ public class DownloadStorageService
     /// 获取所有的下载中数据
     /// </summary>
     /// <returns></returns>
-    public List<DownloadingItem> GetDownloading()
+    public required List<DownloadingItem> GetDownloading()
     {
         // 从数据库获取数据
         DownloadingDb downloadingDb = new DownloadingDb();
@@ -160,7 +160,7 @@ public class DownloadStorageService
     /// 获取所有的下载完成数据
     /// </summary>
     /// <returns></returns>
-    public List<DownloadedItem> GetDownloaded()
+    public required List<DownloadedItem> GetDownloaded()
     {
         // 从数据库获取数据
         DownloadedDb downloadedDb = new DownloadedDb();

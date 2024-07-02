@@ -101,16 +101,15 @@ public class ViewLoginViewModel : ViewModelBase
             }
 
             PropertyChangeAsync(() => { LoginQrCode = LoginQR.GetLoginQRCode(loginUrl.Data.Url); });
-            Console.PrintLine(loginUrl.Data.Url + "\n");
+            Console.Error.WriteLine(loginUrl.Data.Url + "\n");
             LogManager.Debug(Tag, loginUrl.Data.Url);
 
             GetLoginStatus(loginUrl.Data.QrcodeKey);
         }
         catch (Exception e)
         {
-            Console.PrintLine("Login()发生异常: {0}", e);
-            LogManager.Error(Tag, e);
-        }
+            Console.Error.WriteLine("Login()发生异常: {0}", e);
+                    }
     }
 
     /// <summary>
@@ -129,7 +128,7 @@ public class ViewLoginViewModel : ViewModelBase
                 continue;
             }
 
-            Console.PrintLine(loginStatus.Data.Code + "\n" + loginStatus.Data.Message + "\n" +
+            Console.Error.WriteLine(loginStatus.Data.Code + "\n" + loginStatus.Data.Message + "\n" +
                               loginStatus.Data.Url + "\n");
 
             switch (loginStatus.Data.Code)
@@ -189,14 +188,12 @@ public class ViewLoginViewModel : ViewModelBase
                         {
                             EventAggregator.GetEvent<MessageEvent>()
                                 .Publish(DictionaryResource.GetString("LoginFailed"));
-                            LogManager.Error(Tag, DictionaryResource.GetString("LoginFailed"));
-                        }
+                                                    }
                     }
                     catch (Exception e)
                     {
-                        Console.PrintLine("PageLogin 保存登录信息发生异常: {0}", e);
-                        LogManager.Error(e);
-                        EventAggregator.GetEvent<MessageEvent>().Publish(DictionaryResource.GetString("LoginFailed"));
+                        Console.Error.WriteLine("PageLogin 保存登录信息发生异常: {0}", e);
+                                                EventAggregator.GetEvent<MessageEvent>().Publish(DictionaryResource.GetString("LoginFailed"));
                     }
 
                     // TODO 其他操作
@@ -211,7 +208,7 @@ public class ViewLoginViewModel : ViewModelBase
             // 判断是否该结束线程，若为true，跳出while循环
             if (cancellationToken.IsCancellationRequested)
             {
-                Console.PrintLine("停止Login线程，跳出while循环");
+                Console.Error.WriteLine("停止Login线程，跳出while循环");
                 LogManager.Debug(Tag, "登录操作结束");
                 break;
             }

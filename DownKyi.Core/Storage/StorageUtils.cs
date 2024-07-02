@@ -1,13 +1,11 @@
 ﻿using System.Net;
-using DownKyi.Core.Logging;
-using Console = DownKyi.Core.Utils.Debugging.Console;
 
 namespace DownKyi.Core.Storage;
 
 internal static class StorageUtils
 {
     /// <summary>
-    /// 下载图片
+    ///     下载图片
     /// </summary>
     /// <param name="url"></param>
     /// <param name="localFile"></param>
@@ -21,9 +19,8 @@ internal static class StorageUtils
         }
         catch (Exception e)
         {
-            Console.PrintLine("DownloadImage()发生异常: {0}", e);
-            LogManager.Error("StorageUtils", e);
-            return false;
+            Console.Error.WriteLine("DownloadImage()发生异常: {0}", e);
+                        return false;
         }
 
         return true;

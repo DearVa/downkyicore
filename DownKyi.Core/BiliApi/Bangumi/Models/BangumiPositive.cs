@@ -1,10 +1,10 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Bangumi.Models;
 
 public class BangumiPositive : BaseModel
 {
-    [JsonProperty("id")] public long Id { get; set; }
-    [JsonProperty("title")] public string Title { get; set; }
+    [JsonPropertyName("id")] public long Id { get; set; }
+    [JsonPropertyName("title")] public required string Title { get; set; }
 }

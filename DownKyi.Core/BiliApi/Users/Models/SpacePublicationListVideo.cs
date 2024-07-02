@@ -1,47 +1,47 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Users.Models;
 
 public class SpacePublicationListVideo : BaseModel
 {
-    //[JsonProperty("comment")]
+    //[JsonPropertyName("comment")]
     //public int Comment { get; set; }
-    [JsonProperty("typeid")] public int Typeid { get; set; }
-    [JsonProperty("play")] public int Play { get; set; }
+    [JsonPropertyName("typeid")] public int Typeid { get; set; }
+    [JsonPropertyName("play")] public int Play { get; set; }
 
-    [JsonProperty("pic")] public string Pic { get; set; }
+    [JsonPropertyName("pic")] public required string Pic { get; set; }
 
-    //[JsonProperty("subtitle")]
-    //public string Subtitle { get; set; }
-    //[JsonProperty("description")]
-    //public string Description { get; set; }
-    //[JsonProperty("copyright")]
-    //public string Copyright { get; set; }
-    [JsonProperty("title")] public string Title { get; set; }
+    //[JsonPropertyName("subtitle")]
+    //public required string Subtitle { get; set; }
+    //[JsonPropertyName("description")]
+    //public required string Description { get; set; }
+    //[JsonPropertyName("copyright")]
+    //public required string Copyright { get; set; }
+    [JsonPropertyName("title")] public required string Title { get; set; }
 
-    //[JsonProperty("review")]
+    //[JsonPropertyName("review")]
     //public int Review { get; set; }
-    //[JsonProperty("author")]
-    //public string Author { get; set; }
-    [JsonProperty("mid")] public long Mid { get; set; }
-    [JsonProperty("created")] public long Created { get; set; }
+    //[JsonPropertyName("author")]
+    //public required string Author { get; set; }
+    [JsonPropertyName("mid")] public long Mid { get; set; }
+    [JsonPropertyName("created")] public long Created { get; set; }
 
-    [JsonProperty("length")] public string Length { get; set; }
+    [JsonPropertyName("length")] public required string Length { get; set; }
 
-    //[JsonProperty("video_review")]
+    //[JsonPropertyName("video_review")]
     //public int VideoReview { get; set; }
-    [JsonProperty("aid")] public long Aid { get; set; }
+    [JsonPropertyName("aid")] public long Aid { get; set; }
 
-    [JsonProperty("bvid")] public string Bvid { get; set; }
-    //[JsonProperty("hide_click")]
+    [JsonPropertyName("bvid")] public required string Bvid { get; set; }
+    //[JsonPropertyName("hide_click")]
     //public bool HideClick { get; set; }
-    //[JsonProperty("is_pay")]
+    //[JsonPropertyName("is_pay")]
     //public int IsPay { get; set; }
-    //[JsonProperty("is_union_video")]
+    //[JsonPropertyName("is_union_video")]
     //public int IsUnionVideo { get; set; }
-    //[JsonProperty("is_steins_gate")]
+    //[JsonPropertyName("is_steins_gate")]
     //public int IsSteinsGate { get; set; }
-    //[JsonProperty("is_live_playback")]
+    //[JsonPropertyName("is_live_playback")]
     //public int IsLivePlayback { get; set; }
 }

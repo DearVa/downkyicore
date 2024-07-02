@@ -1,22 +1,22 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Bangumi.Models;
 
 public class BangumiSeasonInfo : BaseModel
 {
-    [JsonProperty("badge")] public string Badge { get; set; }
+    [JsonPropertyName("badge")] public required string Badge { get; set; }
 
     // badge_info
     // badge_type
-    [JsonProperty("cover")] public string Cover { get; set; }
+    [JsonPropertyName("cover")] public required string Cover { get; set; }
 
-    [JsonProperty("media_id")] public long MediaId { get; set; }
+    [JsonPropertyName("media_id")] public long MediaId { get; set; }
 
     // new_ep
-    [JsonProperty("season_id")] public long SeasonId { get; set; }
-    [JsonProperty("season_title")] public string SeasonTitle { get; set; }
+    [JsonPropertyName("season_id")] public long SeasonId { get; set; }
+    [JsonPropertyName("season_title")] public required string SeasonTitle { get; set; }
 
-    [JsonProperty("season_type")] public int SeasonType { get; set; }
+    [JsonPropertyName("season_type")] public int SeasonType { get; set; }
     // stat
 }

@@ -20,7 +20,7 @@ public class ToViewMedia : BindableBase
     public long Aid { get; set; }
 
     // bvid
-    public string Bvid { get; set; }
+    public required string Bvid { get; set; }
 
     // UP主的mid
     public long UpMid { get; set; }
@@ -48,7 +48,7 @@ public class ToViewMedia : BindableBase
     // 视频标题
     private string title;
 
-    public string Title
+    public required string Title
     {
         get => title;
         set => SetProperty(ref title, value);
@@ -57,7 +57,7 @@ public class ToViewMedia : BindableBase
     // UP主的昵称
     private string upName;
 
-    public string UpName
+    public required string UpName
     {
         get => upName;
         set => SetProperty(ref upName, value);

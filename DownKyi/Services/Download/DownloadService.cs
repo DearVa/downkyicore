@@ -187,9 +187,8 @@ public abstract class DownloadService
         }
         catch (Exception e)
         {
-            Console.PrintLine($"{Tag}.DownloadCover()发生异常: {0}", e);
-            LogManager.Error($"{Tag}.DownloadCover()", e);
-        }
+            Console.Error.WriteLine($"{Tag}.DownloadCover()发生异常: {0}", e);
+                    }
 
         return null;
     }
@@ -286,9 +285,8 @@ public abstract class DownloadService
             }
             catch (Exception e)
             {
-                Console.PrintLine($"{Tag}.DownloadSubtitle()发生异常: {0}", e);
-                LogManager.Error($"{Tag}.DownloadSubtitle()", e);
-            }
+                Console.Error.WriteLine($"{Tag}.DownloadSubtitle()发生异常: {0}", e);
+                            }
         }
 
         return srtFiles;
@@ -425,19 +423,17 @@ public abstract class DownloadService
             }
             catch (InvalidOperationException e)
             {
-                Console.PrintLine($"{Tag}.DoWork()发生InvalidOperationException异常: {0}", e);
-                LogManager.Error($"{Tag}.DoWork() InvalidOperationException", e);
-            }
+                Console.Error.WriteLine($"{Tag}.DoWork()发生InvalidOperationException异常: {0}", e);
+                            }
             catch (Exception e)
             {
-                Console.PrintLine($"{Tag}.DoWork()发生异常: {0}", e);
-                LogManager.Error($"{Tag}.DoWork()", e);
-            }
+                Console.Error.WriteLine($"{Tag}.DoWork()发生异常: {0}", e);
+                            }
 
             // 判断是否该结束线程，若为true，跳出while循环
             if (cancellationToken.IsCancellationRequested)
             {
-                Console.PrintLine($"{Tag}.DoWork() 下载服务结束，跳出while循环");
+                Console.Error.WriteLine($"{Tag}.DoWork() 下载服务结束，跳出while循环");
                 LogManager.Debug($"{Tag}.DoWork()", "下载服务结束");
                 break;
             }
@@ -457,7 +453,7 @@ public abstract class DownloadService
         await Task.WhenAny(Task.WhenAll(downloadingTasks), Task.Delay(30000));
         foreach (var tsk in downloadingTasks.FindAll((m) => !m.IsCompleted))
         {
-            Console.PrintLine($"{Tag}.DoWork() 任务结束超时");
+            Console.Error.WriteLine($"{Tag}.DoWork() 任务结束超时");
             LogManager.Debug($"{Tag}.DoWork()", "任务结束超时");
         }
     }
@@ -484,7 +480,7 @@ public abstract class DownloadService
             }
             catch (Exception e)
             {
-                Console.PrintLine(Tag, e.ToString());
+                Console.Error.WriteLine(Tag, e.ToString());
                 LogManager.Debug(Tag, e.Message);
 
                 var alertService = new AlertService(dialogService);
@@ -714,7 +710,7 @@ public abstract class DownloadService
         }
         catch (OperationCanceledException e)
         {
-            Console.PrintLine(Tag, e.ToString());
+            Console.Error.WriteLine(Tag, e.ToString());
             LogManager.Debug(Tag, e.Message);
         }
     }

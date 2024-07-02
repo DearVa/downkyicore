@@ -1,20 +1,20 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace DownKyi.Core.Aria2cNet.Client.Entity;
 
-[JsonObject]
 public class AriaAddMetalink
 {
-    [JsonProperty("id")] public string Id { get; set; }
+    [JsonPropertyName("id")] public required string Id { get; set; }
 
-    [JsonProperty("jsonrpc")] public string Jsonrpc { get; set; }
+    [JsonPropertyName("jsonrpc")] public required string Jsonrpc { get; set; }
 
-    [JsonProperty("result")] public string Result { get; set; }
+    [JsonPropertyName("result")] public required string Result { get; set; }
 
-    [JsonProperty("error")] public AriaError Error { get; set; }
+    [JsonPropertyName("error")] public required AriaError Error { get; set; }
 
     public override string ToString()
     {
-        return JsonConvert.SerializeObject(this);
+        return JsonSerializer.Serialize(this);
     }
 }

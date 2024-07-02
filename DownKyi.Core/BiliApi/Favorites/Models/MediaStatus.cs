@@ -1,11 +1,11 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Favorites.Models;
 
 public class MediaStatus : BaseModel
 {
-    [JsonProperty("collect")] public long Collect { get; set; }
-    [JsonProperty("play")] public long Play { get; set; }
-    [JsonProperty("danmaku")] public long Danmaku { get; set; }
+    [JsonPropertyName("collect")] public long Collect { get; set; }
+    [JsonPropertyName("play")] public long Play { get; set; }
+    [JsonPropertyName("danmaku")] public long Danmaku { get; set; }
 }

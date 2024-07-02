@@ -45,7 +45,7 @@ public class BangumiFollowMedia : BindableBase
     // 视频标题
     private string title;
 
-    public string Title
+    public required string Title
     {
         get => title;
         set => SetProperty(ref title, value);
@@ -54,7 +54,7 @@ public class BangumiFollowMedia : BindableBase
     // 视频类型名称
     private string seasonTypeName;
 
-    public string SeasonTypeName
+    public required string SeasonTypeName
     {
         get => seasonTypeName;
         set => SetProperty(ref seasonTypeName, value);
@@ -63,7 +63,7 @@ public class BangumiFollowMedia : BindableBase
     // 地区
     private string area;
 
-    public string Area
+    public required string Area
     {
         get => area;
         set => SetProperty(ref area, value);
@@ -72,7 +72,7 @@ public class BangumiFollowMedia : BindableBase
     // 标记是否会员
     private string badge;
 
-    public string Badge
+    public required string Badge
     {
         get => badge;
         set => SetProperty(ref badge, value);
@@ -81,7 +81,7 @@ public class BangumiFollowMedia : BindableBase
     // 简介
     private string evaluate;
 
-    public string Evaluate
+    public required string Evaluate
     {
         get => evaluate;
         set => SetProperty(ref evaluate, value);
@@ -90,7 +90,7 @@ public class BangumiFollowMedia : BindableBase
     // 视频更新进度
     private string indexShow;
 
-    public string IndexShow
+    public required string IndexShow
     {
         get => indexShow;
         set => SetProperty(ref indexShow, value);
@@ -99,7 +99,7 @@ public class BangumiFollowMedia : BindableBase
     // 观看进度
     private string progress;
 
-    public string Progress
+    public required string Progress
     {
         get => progress;
         set => SetProperty(ref progress, value);

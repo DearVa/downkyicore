@@ -1,51 +1,51 @@
-﻿using DownKyi.Core.BiliApi.Models;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using DownKyi.Core.BiliApi.Models;
 
 namespace DownKyi.Core.BiliApi.Users.Models;
 
 public class BangumiFollow : BaseModel
 {
-    [JsonProperty("season_id")] public long SeasonId { get; set; }
-    [JsonProperty("media_id")] public long MediaId { get; set; }
-    [JsonProperty("season_type")] public int SeasonType { get; set; }
-    [JsonProperty("season_type_name")] public string SeasonTypeName { get; set; }
-    [JsonProperty("title")] public string Title { get; set; }
-    [JsonProperty("cover")] public string Cover { get; set; }
+    [JsonPropertyName("season_id")] public long SeasonId { get; set; }
+    [JsonPropertyName("media_id")] public long MediaId { get; set; }
+    [JsonPropertyName("season_type")] public int SeasonType { get; set; }
+    [JsonPropertyName("season_type_name")] public required string SeasonTypeName { get; set; }
+    [JsonPropertyName("title")] public required string Title { get; set; }
+    [JsonPropertyName("cover")] public required string Cover { get; set; }
 
-    [JsonProperty("total_count")] public int TotalCount { get; set; }
+    [JsonPropertyName("total_count")] public int TotalCount { get; set; }
 
     // is_finish
     // is_started
     // is_play
-    [JsonProperty("badge")] public string Badge { get; set; }
+    [JsonPropertyName("badge")] public required string Badge { get; set; }
 
-    [JsonProperty("badge_type")] public int BadgeType { get; set; }
+    [JsonPropertyName("badge_type")] public int BadgeType { get; set; }
 
     // rights
     // stat
-    [JsonProperty("new_ep")] public BangumiFollowNewEp NewEp { get; set; }
+    [JsonPropertyName("new_ep")] public BangumiFollowNewEp NewEp { get; set; }
 
     // rating
     // square_cover
-    [JsonProperty("season_status")] public int SeasonStatus { get; set; }
-    [JsonProperty("season_title")] public string SeasonTitle { get; set; }
+    [JsonPropertyName("season_status")] public int SeasonStatus { get; set; }
+    [JsonPropertyName("season_title")] public required string SeasonTitle { get; set; }
 
-    [JsonProperty("badge_ep")] public string BadgeEp { get; set; }
+    [JsonPropertyName("badge_ep")] public required string BadgeEp { get; set; }
 
     // media_attr
     // season_attr
-    [JsonProperty("evaluate")] public string Evaluate { get; set; }
-    [JsonProperty("areas")] public List<BangumiFollowAreas> Areas { get; set; }
-    [JsonProperty("subtitle")] public string Subtitle { get; set; }
+    [JsonPropertyName("evaluate")] public required string Evaluate { get; set; }
+    [JsonPropertyName("areas")] public required List<BangumiFollowAreas> Areas { get; set; }
+    [JsonPropertyName("subtitle")] public required string Subtitle { get; set; }
 
-    [JsonProperty("first_ep")] public long FirstEp { get; set; }
+    [JsonPropertyName("first_ep")] public long FirstEp { get; set; }
 
     // can_watch
     // series
     // publish
     // mode
     // section
-    [JsonProperty("url")] public string Url { get; set; }
+    [JsonPropertyName("url")] public required string Url { get; set; }
 
     // badge_info
     // first_ep_info
@@ -60,6 +60,6 @@ public class BangumiFollow : BaseModel
     // producers
     // follow_status
     // is_new
-    [JsonProperty("progress")] public string Progress { get; set; }
+    [JsonPropertyName("progress")] public required string Progress { get; set; }
     // both_follow
 }

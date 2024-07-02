@@ -1,11 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace DownKyi.Core.Aria2cNet.Client.Entity;
 
-[JsonObject]
 public class SystemMulticallMathod
 {
-    [JsonProperty("method")] public string Method { get; set; }
+    [JsonPropertyName("method")] public required string Method { get; set; }
 
-    [JsonProperty("params")] public List<object> Params { get; set; }
+    [JsonPropertyName("params")] public required List<object> Params { get; set; }
 }

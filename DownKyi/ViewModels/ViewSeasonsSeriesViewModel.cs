@@ -40,7 +40,7 @@ public class ViewSeasonsSeriesViewModel : ViewModelBase
 
     private string pageName = Tag;
 
-    public string PageName
+    public required string PageName
     {
         get => pageName;
         set => SetProperty(ref pageName, value);
@@ -88,7 +88,7 @@ public class ViewSeasonsSeriesViewModel : ViewModelBase
 
     private string title;
 
-    public string Title
+    public required string Title
     {
         get => title;
         set => SetProperty(ref title, value);

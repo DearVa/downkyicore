@@ -4,6 +4,6 @@ namespace DownKyi.Models;
 
 public class RepeatDownloadStrategyDisplay
 {
-    public string Name { get; set; }
+    public required string Name { get; set; }
     public RepeatDownloadStrategy RepeatDownloadStrategy { get; set; }
 }

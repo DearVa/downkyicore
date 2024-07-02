@@ -21,7 +21,7 @@ public class ViewDelogoViewModel : ViewModelBase
 
     private string _videoPath;
 
-    public string VideoPath
+    public required stringVideoPath
     {
         get => _videoPath;
         set => SetProperty(ref _videoPath, value);
@@ -61,7 +61,7 @@ public class ViewDelogoViewModel : ViewModelBase
 
     private string _status;
 
-    public string Status
+    public required string Status
     {
         get => _status;
         set => SetProperty(ref _status, value);
