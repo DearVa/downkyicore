@@ -24,17 +24,24 @@ public static class SettingsManager
             lock (SyncLock)
             {
                 if (appSettingsCache != null) return appSettingsCache;
-                using var fs = File.OpenRead(SettingsFilePath);
-                return appSettingsCache = JsonSerializer.Deserialize<AppSettings>(fs) ?? new AppSettings();
+                try
+                {
+                    using var fs = File.OpenRead(SettingsFilePath);
+                    return appSettingsCache = JsonSerializer.Deserialize<AppSettings>(fs) ?? new AppSettings();
+                }
+                catch
+                {
+                    return new AppSettings();
+                }
             }
         }
         set
         {
             lock (SyncLock)
             {
-                using var fs = File.OpenWrite(SettingsFilePath);
+                using var fs = new FileStream(SettingsFilePath, FileMode.Create, FileAccess.Write);
                 JsonSerializer.SerializeAsync(fs, value);
-                appSettingsCache = null;
+                appSettingsCache = value;
             }
         }
     }

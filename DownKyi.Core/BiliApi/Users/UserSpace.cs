@@ -1,6 +1,6 @@
-﻿using DownKyi.Core.BiliApi.Sign;
+﻿using System.Text.Json;
+using DownKyi.Core.BiliApi.Sign;
 using DownKyi.Core.BiliApi.Users.Models;
-using Newtonsoft.Json.Linq;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace DownKyi.Core.BiliApi.Users;
@@ -49,11 +49,11 @@ public static class UserSpace
         var result = new List<SpacePublicationListTypeVideoZone>();
         if (publication?.Tlist == null) return result;
 
-        var typeList = JObject.Parse(publication.Tlist.ToString("N"));
-        foreach (var item in typeList)
+        using var doc = JsonDocument.Parse(publication.Tlist.ToString("N"));
+        foreach (var item in doc.RootElement.EnumerateObject())
         {
-            if (item.Value == null) continue;
-            var value = JsonSerializer.Deserialize<SpacePublicationListTypeVideoZone>(item.Value.ToString());
+            if (item.Value.ValueKind == JsonValueKind.Undefined) continue;
+            var value = JsonSerializer.Deserialize<SpacePublicationListTypeVideoZone>(item.Value.GetRawText());
             if (value == null) continue;
             result.Add(value);
         }
