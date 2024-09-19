@@ -17,23 +17,11 @@ public class PlayUrlOrigin : BaseModel
 
 public class PlayUrl : BaseModel
 {
-    // from
-    // result
-    // message
-    // quality
-    // format
-    // timelength
-    // accept_format
-    [JsonPropertyName("accept_description")] public required List<string> AcceptDescription { get; set; }
-
-    [JsonPropertyName("accept_quality")] public required List<int> AcceptQuality { get; set; }
+    [JsonPropertyName("accept_quality")] public List<int> AcceptQuality { get; set; } = [];
 
     // video_codecid
     // seek_param
     // seek_type
     [JsonPropertyName("durl")] public List<PlayUrlDurl> Durl { get; set; } = [];
     [JsonPropertyName("dash")] public PlayUrlDash Dash { get; set; }
-
-    [JsonPropertyName("support_formats")] public required List<PlayUrlSupportFormat> SupportFormats { get; set; }
-    // high_format
 }
